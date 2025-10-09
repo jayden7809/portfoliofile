@@ -1,0 +1,778 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  background-color: #0f172a;
+  cursor: none !important;
+  user-select: none;
+}
+
+body {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+/* 전체 컨테이너 */
+.Wrap {
+  display: flex;
+  width: 1440px;
+  height: 100vh;
+  margin: 0 auto;
+  overflow: hidden;
+  /* 전체 스크롤 방지 */
+  background-color: #0f172a;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
+/* 마우스를 따라다니는 원 */
+.cursor-circle {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  /* 중앙 정렬 */
+  transition: top 0.05s, left 0.05s;
+}
+
+/* 원 크기 및 투명도 */
+.circle-5 {
+  width: 20px;
+  height: 20px;
+  background-color: rgba(43, 221, 215, 0.3);
+  opacity: 0.7;
+}
+
+/* 왼쪽 패널 (고정 영역) */
+.left-panel {
+  width: 45%;
+  background-color: #0f172a;
+  color: white;
+  padding: 20px 40px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.left-panel h1 {
+  font-size: 50px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: #D9E2EF;
+}
+
+.left-panel h2 {
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: #8B9DBB;
+}
+
+.left-panel p {
+  font-size: 30px;
+  color: #8B9DBB;
+}
+
+.left-panel p:nth-child(4) {
+  margin-left: 12px;
+}
+
+.left-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 60px 0 0 0;
+}
+
+.left-panel li {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+/* 글자 */
+.left-panel li span {
+  color: #8B9DBB;
+  font-size: 30px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  position: relative;
+  z-index: 3;
+  /* 막대 위 글자 */
+}
+
+/* 기본 회색 막대 */
+.left-panel li::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 130px;
+  transform: translateY(-50%);
+  width: 70px;
+  height: 2px;
+  background-color: #8B9DBB;
+  z-index: 1;
+}
+
+/* 민트색 막대 */
+.left-panel li span::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 130px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 2px;
+  background-color: #2bddd7;
+  transition: width 0.5s ease-in-out;
+  z-index: 2;
+}
+
+/* span 호버 시 */
+.left-panel li span:hover {
+  color: #2bddd7;
+  text-shadow: 0 0 10px #2bddd7;
+}
+
+.left-panel li span:hover::before {
+  width: 70px;
+  /* 막대 확장 */
+}
+
+.left-panel nav {
+  margin: 0;
+}
+
+.info li {
+  color: #2bddd7;
+  font-size: 18px;
+  /* opacity: 0.6; */
+}
+
+.left-panel nav ul li {
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.left-panel nav ul li.active span {
+  color: #2bddd7;
+  /* transform: translateX(5px); */
+}
+
+.left-panel nav ul li.active span::before {
+  width: 70px;
+}
+
+
+.info li:nth-child(odd) {
+  margin: 0 0 0 0;
+}
+
+.info li:nth-child(even) {
+  margin: 0 0 10px 0;
+}
+
+.info li::after {
+  display: none;
+}
+
+.info li::before {
+  display: none;
+}
+
+/* Info */
+
+
+
+
+
+
+
+
+/* 오른쪽 패널 (스크롤 영역) */
+/* 오른쪽 패널 (스크롤 영역) */
+/* 오른쪽 패널 (스크롤 영역) */
+/* 오른쪽 패널 (스크롤 영역) */
+/* 오른쪽 패널 (스크롤 영역) */
+/* 오른쪽 패널 (스크롤 영역) */
+/* 오른쪽 패널 (스크롤 영역) */
+/* 오른쪽 패널 (스크롤 영역) */
+/* 오른쪽 패널 (스크롤 영역) */
+/* 오른쪽 패널 (스크롤 영역) */
+/* 오른쪽 패널 (스크롤 영역) */
+/* 오른쪽 패널 (스크롤 영역) */
+/* 오른쪽 패널 (스크롤 영역) */
+/* 오른쪽 패널 (스크롤 영역) */
+/* 오른쪽 패널 (스크롤 영역) */
+/* 오른쪽 패널 (스크롤 영역) */
+.right-panel {
+  width: 55%;
+  height: 100vh;
+  overflow-y: scroll;
+  background: #0f172a;
+  padding: 20px 60px;
+  box-sizing: border-box;
+
+  /* 스크롤바 숨기기 */
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE 10+ */
+}
+
+.right-panel::-webkit-scrollbar {
+  display: none;
+  /* Chrome, Safari, Edge */
+}
+
+.title {
+  margin: 50px 0 80px 0;
+}
+
+.title p:nth-child(1) {
+  font-size: 30px;
+  font-weight: bold;
+  color: #2bddd7;
+  text-align: center;
+  text-shadow:
+    0 0 5px #2bddd7,
+    0 0 8px #2bddd7,
+    0 0 10px #2bddd7,
+    0 0 30px #00ffff,
+    0 0 40px #00ffff;
+  animation: flicker 4s infinite;
+}
+
+.title p:nth-child(2) {
+  font-size: 30px;
+  font-weight: bold;
+  color: #2bddd7;
+  text-align: center;
+  text-shadow:
+    0 0 5px #2bddd7,
+    0 0 8px #2bddd7,
+    0 0 10px #2bddd7,
+    0 0 30px #00ffff,
+    0 0 40px #00ffff;
+  animation: flicker 4s infinite;
+  margin-bottom: 30px;
+  background: transparent;
+}
+
+@keyframes flicker {
+
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    opacity: 1;
+    text-shadow:
+      0 0 5px #2bddd7,
+      0 0 8px #2bddd7,
+      0 0 10px #2bddd7,
+      0 0 30px #00ffff,
+      0 0 40px #00ffff;
+  }
+
+  20%,
+  24%,
+  55% {
+    opacity: 0.6;
+    text-shadow:
+      0 0 3px #2bddd7,
+      0 0 5px #00ffff,
+      0 0 7px #00ffff;
+  }
+}
+
+.title p {
+  font-size: 30px;
+  color: #8b9dbb;
+  text-align: center;
+}
+
+.cursor {
+  display: inline-block;
+  width: 0ch;
+  animation: blink 2s step-start infinite;
+  color: #2bddd7;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+
+
+.education {
+  width: 627px;
+  height: 390px;
+  /* border: 1px solid #2bddd7; */
+}
+
+.education .edu-bar1 {
+  width: 627px;
+  height: 3px;
+  background-color: #D9E2EF;
+}
+
+.education .edu-bar2 {
+  width: 627px;
+  height: 3px;
+  margin-top: 10px;
+  background-color: #D9E2EF;
+}
+
+.education .edu-bar3 {
+  width: 627px;
+  height: 3px;
+  margin-top: 10px;
+  background-color: #D9E2EF;
+}
+
+.edu-title {
+  font-weight: bold;
+}
+
+.education p {
+  color: #8B9DBB;
+  font-size: 30px;
+  line-height: 45px;
+}
+
+/* =======================
+   Toggle Box (Skill Section)
+   ======================= */
+.skill {
+  margin-top: 150px;
+}
+
+.toggle-box {
+  width: 627px;
+  height: 120px;
+  display: flex;
+  overflow: hidden;
+  border: 1px solid #8B9DBB;
+  border-radius: 12px;
+  transition: height 0.5s ease;
+  margin-bottom: 20px;
+  background-color: #0f172a;
+}
+
+.toggle-box:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 0 15px #2bddd7;
+  transition: 0.3s ease;
+  scale: 1.02;;
+}
+
+/* 열릴 때 높이 확장 */
+.toggle-box.open {
+  height: 170px;
+}
+
+/* 이미지 영역 */
+.image-area {
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+}
+
+.image-area img {
+  width: 100%;
+  height: 100%;
+  margin-top: 10px;
+  margin-left: 10px;
+  object-fit: cover;
+}
+
+/* 텍스트 영역 */
+.text-area {
+  width: 527px;
+  margin-left: 10px;
+  padding: 15px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+}
+
+.title-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.skill-title {
+  font-size: 30px;
+  color: #8B9DBB;
+  margin: 0;
+}
+
+.arrow-btn {
+  background: none;
+  border: none;
+  color: #8B9DBB;
+  font-size: 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+/* 열릴 때 화살표 회전 */
+.toggle-box.open .arrow-btn {
+  transform: rotate(180deg);
+}
+
+/* 상세 내용 (열림 애니메이션) */
+.skill-detail {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.4s ease;
+}
+
+.toggle-box.open .skill-detail {
+  max-height: 300px;
+  opacity: 1;
+  /* background-color: #2bddd7; */
+}
+
+.skill-detail p {
+  font-size: 15px;
+  color: #BFC9E4;
+  line-height: 1.4;
+  margin: 5px 0;
+}
+
+/* Project */
+/* Project */
+/* Project */
+/* Project */
+/* Project */
+.Project {
+  margin-top: 200px;
+}
+
+/* 제네시스 */
+.pro-genesis {
+  width: 638px;
+  height: 300px;
+  display: flex;
+  border: 2px solid #8B9DBB;
+  border-radius: 7px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(43, 221, 215, 0.3);
+}
+
+/* 안양시청 */
+.pro-anyang {
+  width: 638px;
+  height: 300px;
+  display: flex;
+  border: 2px solid #8B9DBB;
+  border-radius: 7px;
+  margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(43, 221, 215, 0.3);
+}
+
+/* 시리즈업 */
+.pro-series {
+  width: 638px;
+  height: 300px;
+  display: flex;
+  border: 2px solid #8B9DBB;
+  border-radius: 7px;
+  margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(43, 221, 215, 0.3);
+}
+
+/* Sourvenir */
+.pro-sourve {
+  width: 638px;
+  height: 300px;
+  display: flex;
+  border: 2px solid #8B9DBB;
+  border-radius: 7px;
+  margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(43, 221, 215, 0.3);
+}
+
+/* little-Farmer */
+.pro-little {
+  width: 638px;
+  height: 300px;
+  display: flex;
+  border: 2px solid #8B9DBB;
+  border-radius: 7px;
+  margin-bottom: 70px;
+    backdrop-filter: blur(10px);
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(43, 221, 215, 0.3);
+}
+
+
+.pro-series>.project-imgbox:nth-child(1) {
+  display: flex;
+  width: 130px;
+  height: 258px;
+  margin-top: 20px;
+  margin-left: 17px;
+  overflow: hidden;
+  position: relative;
+}
+
+.pro-series>.project-imgbox:nth-child(2) {
+  display: flex;
+  width: 130px;
+  height: 253px;
+  margin-top: 20px;
+  margin-left: 0px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* 시리즈업 */
+.pro-series>.project-imgbox>a>.project-series-log {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: top 3s ease;
+}
+
+.pro-series>.project-imgbox>a>.project-series-full {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  transition: top 5s ease;
+}
+
+.pro-series>.project-imgbox:hover .project-series-full {
+  top: -1120px;
+}
+
+.project-imgbox {
+  width: 255px;
+  height: 258px;
+  margin-top: 20px;
+  margin-left: 17px;
+  overflow: hidden;
+  position: relative;
+}
+
+
+/* 제네시스 */
+.pro-genesis img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: top 4s ease;
+}
+
+/* 안양시청 */
+.pro-anyang img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: top 2s ease;
+}
+
+/* Sourvenir */
+.pro-sourve img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: top 2s ease;
+}
+
+/* LittleFarmer */
+.pro-little img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: top 2s ease;
+}
+
+.pro-anyang>.project-imgbox:hover img {
+  top: -140px;
+}
+
+.project-imgbox:hover img {
+  top: -750px;
+}
+
+.pro-sourve>.project-imgbox:hover img {
+  top: -330px;
+}
+
+.pro-little>.project-imgbox:hover img {
+  top: -630px;
+}
+
+
+
+
+
+
+.project-textbox {
+  width: 310px;
+  height: 200px;
+  margin-top: 20px;
+  margin-left: 26px;
+  /* background-color: #2bddd7; */
+}
+
+.project-textbox h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2bddd7;
+  margin-bottom: 20px;
+}
+
+.project-textbox p {
+  font-size: 15px;
+  line-height: 16px;
+  color: #8B9DBB;
+}
+
+.project-skill {
+  margin-top: 45px;
+  display: flex;
+}
+
+.project-skill>div {
+  width: 100px;
+  height: 30px;
+  font-size: 18x;
+  padding-top: 7px;
+  font-weight: bold;
+  margin-right: 10px;
+  text-align: center;
+  align-items: center;
+  border-radius: 7px;
+  background-color: #8B9DBB;
+}
+
+.pro-series>.project-textbox>.project-skill {
+  display: flex;
+  margin-top: 5px;
+}
+
+.pro-sourve>.project-textbox>.project-skill {
+  display: flex;
+  margin-top: 5px;
+}
+
+.pro-little>.project-textbox>.project-skill {
+  display: flex;
+  margin-top: 50px;
+}
+
+
+/* Skill:Hover */
+/* Skill:Hover */
+/* Skill:Hover */
+.project-skill>div:hover {
+  color: #2bddd7;
+  transition: 0.5s ease-in-out;
+}
+
+.pro-anyang>.project-textbox>.project-skill {
+  margin-top: 14px;
+}
+
+/* Skill:Hover */
+/* Skill:Hover */
+/* Skill:Hover */
+/* sad */
+/* sad */
+/* sad */
+/* sad */
+/* sad */
+/* sad */
+/* sad */
+/* Footer */
+/* Footer */
+/* Footer */
+/* Footer */
+/* Footer */
+/* Footer */
+footer {
+  display: flex;
+  margin-bottom: 60px;
+}
+
+/* footer>div{
+  width: 200px;
+  height: 40px;
+  background-color: #8B9DBB;
+}
+ */
+footer p {
+  font-size: 16px;
+  color: #2bddd7;
+  margin-right: 20px;
+}
+
+footer p:nth-child(3) {
+  margin-right: 0;
+}
+
+
+
+
+
+
+
+
+
+
+/* 반응형 대응 */
+/* 반응형 대응 */
+/* 반응형 대응 */
+/* 반응형 대응 */
+/* 반응형 대응 */
+/* 반응형 대응 */
+/* 반응형 대응 */
+/* 반응형 대응 */
+/* 반응형 대응 */
+@media (max-width: 1024px) {
+  .Wrap {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .left-panel {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .right-panel {
+    width: 100%;
+    height: auto;
+    overflow-y: visible;
+  }
+}
