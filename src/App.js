@@ -14,19 +14,17 @@ import illust from "./assets/images/illustrator.png";
 import photoshop from "./assets/images/photoshop.png";
 import boot from "./assets/images/bootstrap.png";
 import figma from "./assets/images/figma.png";
-import node from "./assets/images/nodejs.png"
-import next from "./assets/images/letter-n.png"
+import node from "./assets/images/nodejs.png";
+import next from "./assets/images/letter-n.png";
 import arrow from "./assets/images/arrow-down-sign-to-navigate.png";
 
 /* 프로젝트 이미지 */
-import genesis from "./assets/images/genesis.png"
-import anyang from "./assets/images/anyang.png"
-import serieslog from "./assets/images/serieslog.png"
-import seriesup from "./assets/images/serisup.png"
-import sourvenir from "./assets/images/sourvenir.png"
-import little from "./assets/images/littel.png"
-
-
+import genesis from "./assets/images/genesis.png";
+import anyang from "./assets/images/anyang.png";
+import serieslog from "./assets/images/serieslog.png";
+import seriesup from "./assets/images/serisup.png";
+import sourvenir from "./assets/images/sourvenir.png";
+import little from "./assets/images/littel.png";
 
 // TypingText 컴포넌트 정의
 function TypingText({ texts, speed = 50, startIndex = 0 }) {
@@ -66,7 +64,8 @@ function TypingText({ texts, speed = 50, startIndex = 0 }) {
       {texts.map((line, idx) => (
         <p key={idx} style={{ minHeight: "1.5em" }}>
           {typed[idx]}
-          {((idx === currentLine && !finished) || (finished && idx === texts.length - 1)) && (
+          {((idx === currentLine && !finished) ||
+            (finished && idx === texts.length - 1)) && (
             <span className="cursor">|</span>
           )}
         </p>
@@ -74,9 +73,6 @@ function TypingText({ texts, speed = 50, startIndex = 0 }) {
     </>
   );
 }
-
-
-
 
 /* 기존App.js */
 /* 기존App.js */
@@ -161,8 +157,7 @@ function App() {
     const change = target - start;
     const startTime = performance.now();
 
-    const easeInOutQuad = (t) =>
-      t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; // 부드럽게 감속되는 곡선
+    const easeInOutQuad = (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t); // 부드럽게 감속되는 곡선
 
     const animateScroll = (currentTime) => {
       const elapsed = currentTime - startTime;
@@ -184,14 +179,12 @@ function App() {
       refName === "about"
         ? aboutRef
         : refName === "skill"
-          ? skillRef
-          : projectRef;
+        ? skillRef
+        : projectRef;
 
     const offset = targetRef.current.offsetTop - 100; // 원하는 만큼 아래로 조정
     smoothScrollTo(rightPanel, offset, 800); // 🔥 1000ms(1초) 동안 부드럽게 이동
   };
-
-
 
   /* 스킬 데이터 */
   const skills = [
@@ -218,8 +211,7 @@ function App() {
       img: Java,
       detail1:
         "사용자의 입력을 처리하고, 애니메이션을 구현하며 API연동 및 데이터를 처리한 경험이 있습니다.",
-      detail2:
-        "프로젝트에서 API 연동, 상태관리 로직 등을 직접 구현했습니다.",
+      detail2: "프로젝트에서 API 연동, 상태관리 로직 등을 직접 구현했습니다.",
     },
     {
       id: 4,
@@ -234,10 +226,8 @@ function App() {
       id: 5,
       name: "PHP",
       img: php,
-      detail1:
-        "기초적인 CRUD 구현 및 서버사이드 렌더링 경험이 있습니다.",
-      detail2:
-        "MySQL 연동과 간단한 백엔드 API 구축 경험이 있습니다.",
+      detail1: "기초적인 CRUD 구현 및 서버사이드 렌더링 경험이 있습니다.",
+      detail2: "MySQL 연동과 간단한 백엔드 API 구축 경험이 있습니다.",
     },
     {
       id: 6,
@@ -254,8 +244,7 @@ function App() {
       img: jq,
       detail1:
         "Java Script의 라이브러리로 문서를 더 간결하게 작성할 수 있습니다.",
-      detail2:
-        "AJAX 통신 및 슬라이드, 모달 등 UI효과 구현 경험이 있습니다.",
+      detail2: "AJAX 통신 및 슬라이드, 모달 등 UI효과 구현 경험이 있습니다.",
     },
     {
       id: 8,
@@ -263,17 +252,14 @@ function App() {
       img: react,
       detail1:
         "React를 통해 작업하면서 편리함과 실용성을 느끼며 작업한 경험이 있습니다.",
-      detail2:
-        "본 포트폴리오는 React로 작업되었습니다.",
+      detail2: "본 포트폴리오는 React로 작업되었습니다.",
     },
     {
       id: 9,
       name: "Illustrator",
       img: illust,
-      detail1:
-        "벡터 디자인 작업 및 로고, 아이콘 제작 경험이 있습니다.",
-      detail2:
-        "다양한 디자인요소를 제작하고 편집한 경험이 있습니다.",
+      detail1: "벡터 디자인 작업 및 로고, 아이콘 제작 경험이 있습니다.",
+      detail2: "다양한 디자인요소를 제작하고 편집한 경험이 있습니다.",
     },
     {
       id: 10,
@@ -281,15 +267,13 @@ function App() {
       img: photoshop,
       detail1:
         "이미지 보정, 합성, 그래픽 디자인 등 전반적인 편집 경험이 있습니다.",
-      detail2:
-        "마스크기능을 활용하여 작업한 경험이 있습니다.",
+      detail2: "마스크기능을 활용하여 작업한 경험이 있습니다.",
     },
     {
       id: 11,
       name: "Bootstrap",
       img: boot,
-      detail1:
-        "Bootstrap을 이용한 반응형 UI 제작 경험이 있습니다.",
+      detail1: "Bootstrap을 이용한 반응형 UI 제작 경험이 있습니다.",
       detail2:
         "디자인 일관성을 유지하고, 다양한 해상도에서 적용 가능한 레이아웃을 구현할 수 있습니다.",
     },
@@ -306,19 +290,15 @@ function App() {
       id: 13,
       name: "Node.js",
       img: node,
-      detail1:
-        "클라이언트와의 비동기 통신을 효율적으로 처리했습니다.",
-      detail2:
-        "로그인, 데이터 관리 등 기본적인 기능을 구현한 경험이 있습니다.",
+      detail1: "클라이언트와의 비동기 통신을 효율적으로 처리했습니다.",
+      detail2: "로그인, 데이터 관리 등 기본적인 기능을 구현한 경험이 있습니다.",
     },
     {
       id: 14,
       name: "Next.js",
       img: next,
-      detail1:
-        "React기반 프레임 워크로",
-      detail2:
-        "회원가입, 로그인 및 게시판작성을 구현한 경험이 있습니다.",
+      detail1: "React기반 프레임 워크로",
+      detail2: "회원가입, 로그인 및 게시판작성을 구현한 경험이 있습니다.",
     },
   ];
 
@@ -341,10 +321,24 @@ function App() {
       <div className="Wrap">
         {/* 좌측 영역 */}
         <aside className="left-panel">
-          <h1>Lim Jae Hyung</h1>
-          <h2>Frontend Developer</h2>
-          <p>"Not One Day,</p>
-          <p>Today Is Day One"</p>
+          {/* Flip 효과 */}
+          {/* Flip 효과 */}
+          <div className="title-img">
+            <div className="title-inner">
+              <div className="front">
+                <h1>Lim Jae Hyung</h1>
+                <h2>Frontend Developer</h2>
+                <p>"Not One Day,</p>
+                <p>Today Is Day One"</p>
+              </div>
+              <div className="back">
+                <img src={{html}} alt={html} />
+              </div>
+            </div>
+          </div>
+          {/* Flip 효과 */}
+          {/* Flip 효과 */}
+
           <nav>
             <ul>
               <li
@@ -420,6 +414,7 @@ function App() {
               <div
                 key={skill.id}
                 className={`toggle-box ${openBox === skill.id ? "open" : ""}`}
+                onClick={() => handleToggle(skill.id)}
               >
                 <div className="image-area">
                   <img src={skill.img} alt={skill.name} />
@@ -431,7 +426,11 @@ function App() {
                       className="arrow-btn"
                       onClick={() => handleToggle(skill.id)}
                     >
-                      <img style={{ width: "30px", height: "30px" }} src={arrow} alt="arrow" />
+                      <img
+                        style={{ width: "30px", height: "30px" }}
+                        src={arrow}
+                        alt="arrow"
+                      />
                     </button>
                   </div>
                   <div className="skill-detail">
@@ -444,94 +443,46 @@ function App() {
           </section>
           {/* Project */}
           <section ref={projectRef} className="Project">
-            {/* 제네시스 */}
-            <div className="pro-genesis">
+            {/* 리틀파머 */}
+            <div className="pro-little">
               <div className="project-imgbox">
-                <a href="https://jayden7809.github.io/genesis/" target="_blank" rel="noopener noreferrer" title="클릭하시면 사이트로 이동합니다.">
-                  <img src={genesis} alt="genesis" />
-                </a>
+                <img src={little} alt="little" />
               </div>
               <div className="project-textbox">
-                <h2>제네시스 홈페이지 리뉴얼</h2>
-                <p>가장 첫번째 작업으로 제네시스 홈페이지를 </p>
-                <p> 리뉴얼 해봤습니다.</p>
+                <h2>
+                  농업 교육용 강의 페이지 작업 <p>반응형</p>
+                </h2>
+                <p>세번째 팀 프로젝트로 농업 교육용 강의 페이지를</p>
+                <p>작업해 봤습니다.</p>
                 <p>&nbsp;</p>
-                <p>HTML을 이용해 브라우저에 렌더링 하였고</p>
-                <p>CSS를 사용해 위치와 크기 등 을 조정하였습니다.</p>
+                <p>마찬가지로 Figma 를 사용해 디자인을 구상하고 </p>
+                <p>React를 기반으로 작업하면서 Node.js를 적용</p>
+                <p> 예정이며 영상도 추후 삽입 예정입니다.</p>
                 <p>&nbsp;</p>
-                <p>기능구현은 없었지만 처음으로 한 작업이라</p>
-                <p>가장 기억에 남습니다.</p>
-
-                {<div className="project-skill">
-                  <div>HTML</div>
-                  <div>CSS</div>
-                </div>}
-              </div>
-            </div>
-            {/* 안양시청 */}
-            <div className="pro-anyang">
-              <div className="project-imgbox">
-                <a href="http://solidbass.dothome.co.kr" target="_blank" rel="noopener noreferrer" title="클릭하시면 사이트로 이동합니다.">
-                  <img src={anyang} alt="anyang" />
-                </a>
-              </div>
-              <div className="project-textbox">
-                <h2>안양시청 홈페이지 리뉴얼</h2>
-                <p>두번째 작업으로 안양시청 홈페이지를 리뉴얼</p>
-                <p>해봤습니다.</p>
-                <p>&nbsp;</p>
-                <p>JavaScript를 사용해 슬라이드 배너와 드롭다운</p>
-                <p>메뉴를 구현하였고, 날씨API를 가져와 날씨정보를 </p>
-                <p>볼 수 있도록 작업하였 습니다.</p>
-                <p>&nbsp;</p>
-                <p>그리고 PHP 를 이용하여 회원가입 정보를 저장해</p>
-                <p>로그인 기능을 추가하고 게시판 기능을 적용하여</p>
-                <p>작성 및 수정, 삭제가 가능하도록 구현 하였습니다.</p>
-                {<div className="project-skill">
-                  <div>JavaScript</div>
-                  <div>PHP</div>
-                </div>}
-              </div>
-            </div>
-            {/* 시리즈업 */}
-            <div className="pro-series">
-              <div className="project-imgbox">
-                <a href="http://nuno6844.dothome.co.kr" target="_blank" rel="noopener noreferrer" title="클릭하시면 사이트로 이동합니다.">
-                  <img className="project-series-log" src={serieslog} alt="serieslog" />
-                </a>
-              </div>
-              <div className="project-imgbox">
-                <a href="http://nuno6844.dothome.co.kr/#/HomeView" target="_blank" rel="noopener noreferrer" title="클릭하시면 사이트로 이동합니다.">
-                  <img className="project-series-full" src={seriesup} alt="seriesup" />
-                </a>
-              </div>
-              <div className="project-textbox">
-                <h2>모바일 OTT 플랫폼 작업</h2>
-                <p>첫번째 팀 프로젝트로 영상 스트리밍OTT 플랫폼을 만들어 보았습니다.</p>
-                <p>&nbsp;</p>
-                <p>Figma 를 사용해 디자인을 구상하고 이후 VUE로 </p>
-                <p>한번에 여러가지 파일을 다루면서 작업하였으며  </p>
-                <p>소셜로그인 기능을 구현하여 로그인 정보를 저장</p>
-                <p>하였고, 더 다양한 CSS기능을 배우며 추가하고 JavaScript의 기능에 감탄하며 작업하였습니다.</p>
-                <p>&nbsp;</p>
-                <p>첫 팀 프로젝트로 팀원들간의 협업과 주의할 점에 </p>
-                <p>대해서 배울수 있었던 작업이었습니다.</p>
-                {<div className="project-skill">
-                  <div>VUE</div>
-                  <div>JavaScript</div>
-                  <div>FIGMA</div>
-                </div>}
+                <p>현재 개발중입니다.</p>
+                <div className="project-skill">
+                  <div>Node.js</div>
+                  <div>Next.js</div>
+                  <div>Mongo DB</div>
+                </div>
               </div>
             </div>
             {/* 수브니르 */}
             <div className="pro-sourve">
               <div className="project-imgbox">
-                <a href="https://jayden7809.github.io/sourvenir/" target="_blank" rel="noopener noreferrer" title="클릭하시면 사이트로 이동합니다.">
+                <a
+                  href="https://jayden7809.github.io/sourvenir/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="클릭하시면 사이트로 이동합니다."
+                >
                   <img src={sourvenir} alt="sourvenir" />
                 </a>
               </div>
               <div className="project-textbox">
-                <h2>인테리어 소품샵 페이지 작업</h2>
+                <h2>
+                  인테리어 소품샵 페이지 작업<p>PC버전</p>
+                </h2>
                 <p>두번째 팀 프로젝트로 인테리어, 소품샵 페이지를</p>
                 <p>작업해 봤습니다.</p>
                 <p>&nbsp;</p>
@@ -543,33 +494,139 @@ function App() {
                 <p>새롭게 배운 검색 및 챗봇기능까지 구현하였고, </p>
                 <p>REACT의 장점과 사용성을 많이 느끼게 되었던 </p>
                 <p>작업이었습니다.</p>
-                {<div className="project-skill">
-                  <div>REACT</div>
-                  <div>JavaScript</div>
-                  <div>FIGMA</div>
-                </div>}
+                {
+                  <div className="project-skill">
+                    <div>REACT</div>
+                    <div>Node.js</div>
+                    <div>FIGMA</div>
+                  </div>
+                }
               </div>
             </div>
-            {/* 리틀파머 */}
-            <div className="pro-little">
+
+            {/* 시리즈업 */}
+            <div className="pro-series">
               <div className="project-imgbox">
-                <img src={little} alt="little" />
+                <a
+                  href="http://nuno6844.dothome.co.kr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="클릭하시면 사이트로 이동합니다."
+                >
+                  <img
+                    className="project-series-log"
+                    src={serieslog}
+                    alt="serieslog"
+                  />
+                </a>
+              </div>
+              <div className="project-imgbox">
+                <a
+                  href="http://nuno6844.dothome.co.kr/#/HomeView"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="클릭하시면 사이트로 이동합니다."
+                >
+                  <img
+                    className="project-series-full"
+                    src={seriesup}
+                    alt="seriesup"
+                  />
+                </a>
               </div>
               <div className="project-textbox">
-                <h2>농업 교육용 강의 페이지 작업</h2>
-                <p>세번째 팀 프로젝트로 농업 교육용 강의 페이지를</p>
-                <p>작업해 봤습니다.</p>
+                <h2>
+                  모바일 OTT 플랫폼 작업<p>모바일버전</p>
+                </h2>
+                <p>
+                  첫번째 팀 프로젝트로 영상 스트리밍OTT 플랫폼을 만들어
+                  보았습니다.
+                </p>
                 <p>&nbsp;</p>
-                <p>마찬가지로 Figma 를 사용해 디자인을 구상하고 </p>
-                <p>React를 기반으로 작업하면서 Node.js를 적용</p>
-                <p> 예정이며 영상도 추후 삽입 예정입니다.</p>
+                <p>Figma 를 사용해 디자인을 구상하고 이후 VUE로 </p>
+                <p>한번에 여러가지 파일을 다루면서 작업하였으며 </p>
+                <p>소셜로그인 기능을 구현하여 로그인 정보를 저장</p>
+                <p>
+                  하였고, 더 다양한 CSS기능을 배우며 추가하고 JavaScript의
+                  기능에 감탄하며 작업하였습니다.
+                </p>
                 <p>&nbsp;</p>
-                <p>현재 개발중입니다.</p>
-                <div className="project-skill">
-                  <div>Node.js</div>
-                  <div>REACT</div>
-                  <div>JavaScript</div>
-                </div>
+                <p>첫 팀 프로젝트로 팀원들간의 협업과 주의할 점에 </p>
+                <p>대해서 배울수 있었던 작업이었습니다.</p>
+                {
+                  <div className="project-skill">
+                    <div>VUE</div>
+                    <div>JavaScript</div>
+                    <div>FIGMA</div>
+                  </div>
+                }
+              </div>
+            </div>
+            {/* 안양시청 */}
+            <div className="pro-anyang">
+              <div className="project-imgbox">
+                <a
+                  href="http://solidbass.dothome.co.kr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="클릭하시면 사이트로 이동합니다."
+                >
+                  <img src={anyang} alt="anyang" />
+                </a>
+              </div>
+              <div className="project-textbox">
+                <h2>
+                  안양시청 홈페이지 리뉴얼<p>PC버전</p>
+                </h2>
+                <p>두번째 작업으로 안양시청 홈페이지를 리뉴얼</p>
+                <p>해봤습니다.</p>
+                <p>&nbsp;</p>
+                <p>JavaScript를 사용해 슬라이드 배너와 드롭다운</p>
+                <p>메뉴를 구현하였고, 날씨API를 가져와 날씨정보를 </p>
+                <p>볼 수 있도록 작업하였 습니다.</p>
+                <p>&nbsp;</p>
+                <p>그리고 PHP 를 이용하여 회원가입 정보를 저장해</p>
+                <p>로그인 기능을 추가하고 게시판 기능을 적용하여</p>
+                <p>작성 및 수정, 삭제가 가능하도록 구현 하였습니다.</p>
+                {
+                  <div className="project-skill">
+                    <div>JavaScript</div>
+                    <div>PHP</div>
+                  </div>
+                }
+              </div>
+            </div>
+            {/* 제네시스 */}
+            <div className="pro-genesis">
+              <div className="project-imgbox">
+                <a
+                  href="https://jayden7809.github.io/genesis/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="클릭하시면 사이트로 이동합니다."
+                >
+                  <img src={genesis} alt="genesis" />
+                </a>
+              </div>
+              <div className="project-textbox">
+                <h2>
+                  제네시스 홈페이지 리뉴얼<p>PC버전</p>
+                </h2>
+                <p>가장 첫번째 작업으로 제네시스 홈페이지를 </p>
+                <p> 리뉴얼 해봤습니다.</p>
+                <p>&nbsp;</p>
+                <p>HTML을 이용해 브라우저에 렌더링 하였고</p>
+                <p>CSS를 사용해 위치와 크기 등 을 조정하였습니다.</p>
+                <p>&nbsp;</p>
+                <p>기능구현은 없었지만 처음으로 한 작업이라</p>
+                <p>가장 기억에 남습니다.</p>
+
+                {
+                  <div className="project-skill">
+                    <div>HTML</div>
+                    <div>CSS</div>
+                  </div>
+                }
               </div>
             </div>
           </section>
