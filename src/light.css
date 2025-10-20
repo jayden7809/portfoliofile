@@ -1,0 +1,218 @@
+/* light.css */
+/* 기존 App.css를 베이스로 오버라이드하는 스타일입니다. */
+/* 테마 전환 시 .Wrap.light 클래스로 자동 적용됩니다. */
+body.light-body {
+  background-color: #fdf8f3;
+  color: #2a2a2a;
+  transition: background-color 0.6s ease;
+}
+.Wrap.light {
+    background-color: #f7f3ef;
+    color: #2a2a2a;
+    transition: background-color 0.6s ease, color 0.6s ease;
+}
+
+/* 전체 배경 및 폰트 */
+.light * {
+    background-color: transparent;
+    cursor: none !important;
+    user-select: none;
+    font-family: "M PLUS Rounded 1c", sans-serif;
+}
+
+/* 좌측 패널 */
+.light .left-panel {
+    background-color: #fdf8f3;
+    color: #3b2f2f;
+    border-right: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.light .left-panel h1 {
+    color: #3c2b21;
+}
+
+.light .left-panel h2 {
+    color: #6e5546;
+}
+
+.light .left-panel p {
+    color: #7a5e4c;
+}
+
+/* 네비게이션 */
+.light .left-panel li span {
+    color: #8b6f58;
+    transition: 0.3s ease;
+}
+
+.light .left-panel li span:hover {
+    color: #a55b2a;
+    text-shadow: 0 0 8px rgba(165, 91, 42, 0.4);
+}
+
+.light .left-panel li::after {
+    background-color: #c2b5aa;
+}
+
+.light .left-panel li span::before {
+    background-color: #a55b2a;
+}
+
+.light .left-panel nav ul li.active span {
+    color: #a55b2a;
+}
+
+.light .info li {
+    color: #a55b2a;
+}
+
+/* 오른쪽 패널 */
+.light .right-panel {
+    background-color: #fdf8f3;
+
+    color: #3b2f2f;
+}
+
+/* Flicker 텍스트 효과 색상 */
+.light .title p:nth-child(1),
+.light .title p:nth-child(2) {
+    color: #b76e3a;
+    text-shadow: 0 0 10px rgba(183, 110, 58, 0.3);
+    animation: flicker-light 4s infinite;
+}
+
+@keyframes flicker-light {
+
+    0%,
+    18%,
+    22%,
+    25%,
+    53%,
+    57%,
+    100% {
+        opacity: 1;
+        text-shadow: 0 0 6px #c17a4d, 0 0 12px #b97a4c, 0 0 24px #ffce9b;
+    }
+
+    20%,
+    24%,
+    55% {
+        opacity: 0.6;
+        text-shadow: 0 0 3px #b97a4c, 0 0 5px #f5c495;
+    }
+}
+
+/* 커서 */
+.light .cursor-circle {
+    background-color: rgba(201, 152, 100, 0.25);
+}
+
+/* 교육 섹션 */
+.light .education .edu-bar1,
+.light .education .edu-bar2,
+.light .education .edu-bar3 {
+    background-color: #d6c4b2;
+}
+
+.light .education p {
+    color: #6f5544;
+}
+
+/* 스킬 섹션 */
+.light .toggle-box {
+    background-color: #fffdfb;
+    border: 1px solid #cdb9a9;
+    box-shadow: 0 0 6px rgba(120, 84, 50, 0.1);
+}
+
+.light .toggle-box:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px rgba(180, 130, 90, 0.4);
+}
+
+.light .skill-title {
+    color: #7a5e4c;
+}
+
+.light .arrow-btn {
+    color: #a56b43;
+}
+
+.light .skill-detail p {
+    color: #5a4638;
+}
+
+/* 프로젝트 카드 */
+.light .pro-genesis,
+.light .pro-anyang,
+.light .pro-series,
+.light .pro-sourve,
+.light .pro-little {
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(195, 160, 125, 0.4);
+    backdrop-filter: blur(6px);
+}
+
+.light .project-textbox h2 {
+    color: #a55b2a;
+}
+
+.light .project-textbox p {
+    color: #5f4a3b;
+}
+
+.light .project-skill>div {
+    background-color: #e9d6c1;
+    color: #3b2f2f;
+}
+
+.light .link p {
+    color: #a55b2a;
+}
+
+.light .link p:hover {
+    color: #c06b33;
+    transition: 0.5s;
+    text-shadow: 0 0 10px rgba(192, 107, 51, 0.4);
+}
+
+/* Footer */
+.light footer p {
+    color: #a55b2a;
+}
+
+/* 토글 버튼 */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 40px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #2bddd7;
+    color: #0f172a;
+    z-index: 1000;
+}
+
+.Wrap.light .theme-toggle {
+    background-color: #a55b2a;
+    color: #fffdfb;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.05);
+}
+
+/* 반응형 */
+@media (max-width: 1024px) {
+    .light .Wrap {
+        background-color: #faf7f2;
+    }
+
+    .light .left-panel {
+        background-color: #fffaf5;
+    }
+}
