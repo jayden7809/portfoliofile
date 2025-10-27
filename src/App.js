@@ -21,7 +21,7 @@ import next from "./assets/images/letter-n.png";
 import arrow from "./assets/images/arrow-down-sign-to-navigate.png";
 
 /* 증명사진 */
-import profile from "./assets/images/231A0913-편집.jpg";
+import profile from "./assets/images/231A0913.jpg";
 
 /* 프로젝트 이미지 */
 import genesis from "./assets/images/genesis.png";
@@ -70,8 +70,8 @@ function TypingText({ texts, speed = 50, startIndex = 0 }) {
           {typed[idx]}
           {((idx === currentLine && !finished) ||
             (finished && idx === texts.length - 1)) && (
-              <span className="cursor">|</span>
-            )}
+            <span className="cursor">|</span>
+          )}
         </p>
       ))}
     </>
@@ -98,9 +98,9 @@ function App() {
   };
 
   useEffect(() => {
-  document.body.style.backgroundColor = isLightMode ? "#fdf8f3" : "#0f172a";
-  document.body.style.transition = "background-color 0.5s ease";
-}, [isLightMode]);
+    document.body.style.backgroundColor = isLightMode ? "#fdf8f3" : "#0f172a";
+    document.body.style.transition = "background-color 0.5s ease";
+  }, [isLightMode]);
 
   // 저장된 테마 불러오기
   useEffect(() => {
@@ -194,8 +194,7 @@ function App() {
     const start = element.scrollTop;
     const change = target - start;
     const startTime = performance.now();
-    const easeInOutQuad = (t) =>
-      t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    const easeInOutQuad = (t) => (t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t);
 
     const animateScroll = (currentTime) => {
       const elapsed = currentTime - startTime;
@@ -213,7 +212,11 @@ function App() {
     const rightPanel = rightPanelRef.current;
     if (!rightPanel) return;
     const targetRef =
-      refName === "about" ? aboutRef : refName === "skill" ? skillRef : projectRef;
+      refName === "about"
+        ? aboutRef
+        : refName === "skill"
+        ? skillRef
+        : projectRef;
     const offset = targetRef.current.offsetTop - 100;
     smoothScrollTo(rightPanel, offset);
   };
@@ -346,8 +349,7 @@ function App() {
     },
   ];
 
-  const handleToggle = (id) =>
-    setOpenBox((prev) => (prev === id ? null : id));
+  const handleToggle = (id) => setOpenBox((prev) => (prev === id ? null : id));
 
   return (
     <>
@@ -363,10 +365,17 @@ function App() {
             ></div>
           ))}
           <div className={`Wrap ${isLightMode ? "light" : ""}`}>
-
             <aside className="left-panel">
               {/* 프로필 + 라이트모드 버튼 */}
-              <div className="profile-area" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginRight: "20px" }}>
+              <div
+                className="profile-area"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  // marginRight: "20px",
+                }}
+              >
                 <div className="title-img">
                   <div className={`title-inner ${autoFlip ? "flip" : ""}`}>
                     <div className="front">
@@ -387,10 +396,12 @@ function App() {
                   onClick={toggleLightMode}
                   style={{
                     position: "absolute",
-                    top: "30px",
-                    right: "30px",
+                    top: "74px",
+                    right: "80px",
                     background: "none",
-                    border: "2px solid #8b9dbb",
+                    border: isLightMode
+                      ? "2px solid #2a2a2a"
+                      : "2px solid #8b9dbb",
                     borderRadius: "8px",
                     color: isLightMode ? "#2a2a2a" : "#8b9dbb",
                     padding: "8px 12px",
@@ -401,19 +412,27 @@ function App() {
                 >
                   {isLightMode ? "🌞 Light" : "🌙 Dark"}
                 </button>
-
               </div>
 
               {/* 네비게이션 */}
               <nav>
                 <ul>
-                  <li className={activeSection === "about" ? "active" : ""} onClick={() => scrollToSection("about")}>
+                  <li
+                    className={activeSection === "about" ? "active" : ""}
+                    onClick={() => scrollToSection("about")}
+                  >
                     <span>About</span>
                   </li>
-                  <li className={activeSection === "skill" ? "active" : ""} onClick={() => scrollToSection("skill")}>
+                  <li
+                    className={activeSection === "skill" ? "active" : ""}
+                    onClick={() => scrollToSection("skill")}
+                  >
                     <span>Skill</span>
                   </li>
-                  <li className={activeSection === "project" ? "active" : ""} onClick={() => scrollToSection("project")}>
+                  <li
+                    className={activeSection === "project" ? "active" : ""}
+                    onClick={() => scrollToSection("project")}
+                  >
                     <span>Projects</span>
                   </li>
                 </ul>
@@ -467,38 +486,68 @@ function App() {
               </section>
 
               {/* Skill Section */}
+              {/* Skill Section */}
               <section ref={skillRef} className="skill">
-                {skills.map((skill) => (
-                  <div
-                    key={skill.id}
-                    className={`toggle-box ${openBox === skill.id ? "open" : ""}`}
-                    onClick={() => handleToggle(skill.id)}
-                  >
-                    <div className="image-area">
-                      <img src={skill.img} alt={skill.name} />
-                    </div>
-                    <div className="text-area">
-                      <div className="title-bar">
-                        <h3 className="skill-title">{skill.name}</h3>
-                        <button
-                          className="arrow-btn"
-                          onClick={() => handleToggle(skill.id)}
-                        >
-                          <img
-                            style={{ width: "30px", height: "30px" }}
-                            src={arrow}
-                            alt="arrow"
-                          />
-                        </button>
+                {skills.map((skill) => {
+                  // 라이트모드 전용 아이콘 매핑
+                  const lightModeIcons = {
+                    HTML: require("./assets/images/light-html.png"),
+                    CSS: require("./assets/images/light-css.png"),
+                    JavaScript: require("./assets/images/light-js.png"),
+                    GitHub: require("./assets/images/light-github.png"),
+                    PHP: require("./assets/images/light-php.png"),
+                    Vue: require("./assets/images/light-vue.png"),
+                    "J-Query": require("./assets/images/light-jquery.png"),
+                    React: require("./assets/images/light-react.png"),
+                    Illustrator: require("./assets/images/light-illustrator.png"),
+                    Photoshop: require("./assets/images/light-photoshop.png"),
+                    Bootstrap: require("./assets/images/light-bootstrap.png"),
+                    Figma: require("./assets/images/light-figma.png"),
+                    "Node.js": require("./assets/images/light-node.png"),
+                    "Next.js": require("./assets/images/light-next.png"),
+                  };
+
+                  // 실제 보여줄 이미지 선택
+                  const currentImg =
+                    isLightMode && lightModeIcons[skill.name]
+                      ? lightModeIcons[skill.name]
+                      : skill.img;
+
+                  return (
+                    <div
+                      key={skill.id}
+                      className={`toggle-box ${
+                        openBox === skill.id ? "open" : ""
+                      }`}
+                      onClick={() => handleToggle(skill.id)}
+                    >
+                      <div className="image-area">
+                        <img src={currentImg} alt={skill.name} />
                       </div>
-                      <div className="skill-detail">
-                        <p>{skill.detail1}</p>
-                        <p>{skill.detail2}</p>
+                      <div className="text-area">
+                        <div className="title-bar">
+                          <h3 className="skill-title">{skill.name}</h3>
+                          <button
+                            className="arrow-btn"
+                            onClick={() => handleToggle(skill.id)}
+                          >
+                            <img
+                              style={{ width: "30px", height: "30px" }}
+                              src={arrow}
+                              alt="arrow"
+                            />
+                          </button>
+                        </div>
+                        <div className="skill-detail">
+                          <p>{skill.detail1}</p>
+                          <p>{skill.detail2}</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </section>
+
               {/* Project Section */}
               <section ref={projectRef} className="Project">
                 {/* 리틀파머 */}
@@ -559,28 +608,52 @@ function App() {
                     <p>REACT의 장점과 사용성을 많이 느끼게 되었던 </p>
                     <p>작업이었습니다.</p>
                     <div className="link">
-                      <a href="https://jayden7809.github.io/sourvenir/" target="_blank">
+                      <a
+                        href="https://jayden7809.github.io/sourvenir/"
+                        target="_blank"
+                      >
                         <p>메인 페이지</p>
                       </a>
-                      <a href="https://jayden7809.github.io/sourvenir/lifestyle" target="_blank">
+                      <a
+                        href="https://jayden7809.github.io/sourvenir/lifestyle"
+                        target="_blank"
+                      >
                         <p>카테고리 페이지</p>
                       </a>
-                      <a href="https://jayden7809.github.io/sourvenir/detail/nillo-mug-001" target="_blank">
+                      <a
+                        href="https://jayden7809.github.io/sourvenir/detail/nillo-mug-001"
+                        target="_blank"
+                      >
                         <p>상세 페이지</p>
                       </a>
-                      <a href="https://jayden7809.github.io/sourvenir/cart" target="_blank">
+                      <a
+                        href="https://jayden7809.github.io/sourvenir/cart"
+                        target="_blank"
+                      >
                         <p>장바구니 페이지</p>
                       </a>
-                      <a href="https://jayden7809.github.io/sourvenir/payment" target="_blank">
+                      <a
+                        href="https://jayden7809.github.io/sourvenir/payment"
+                        target="_blank"
+                      >
                         <p>결제 페이지</p>
                       </a>
-                      <a href="https://jayden7809.github.io/sourvenir/Event" target="_blank">
+                      <a
+                        href="https://jayden7809.github.io/sourvenir/Event"
+                        target="_blank"
+                      >
                         <p>이벤트 페이지</p>
                       </a>
-                      <a href="https://jayden7809.github.io/sourvenir/mypage" target="_blank">
+                      <a
+                        href="https://jayden7809.github.io/sourvenir/mypage"
+                        target="_blank"
+                      >
                         <p>마이 페이지</p>
                       </a>
-                      <a href="https://jayden7809.github.io/sourvenir/Community" target="_blank">
+                      <a
+                        href="https://jayden7809.github.io/sourvenir/Community"
+                        target="_blank"
+                      >
                         <p>커뮤니티 페이지</p>
                       </a>
                     </div>
@@ -642,22 +715,40 @@ function App() {
                     <p>첫 팀 프로젝트로 팀원들간의 협업과 주의할 점에 </p>
                     <p>대해서 배울수 있었던 작업이었습니다.</p>
                     <div className="link">
-                      <a href="http://nuno6844.dothome.co.kr/#/login" target="_blank">
+                      <a
+                        href="http://nuno6844.dothome.co.kr/#/login"
+                        target="_blank"
+                      >
                         <p>로그인 페이지</p>
                       </a>
-                      <a href="http://nuno6844.dothome.co.kr/#/HomeView" target="_blank">
+                      <a
+                        href="http://nuno6844.dothome.co.kr/#/HomeView"
+                        target="_blank"
+                      >
                         <p>메인 페이지</p>
                       </a>
-                      <a href="http://nuno6844.dothome.co.kr/#/SERIES_UP_drama_detail" target="_blank">
+                      <a
+                        href="http://nuno6844.dothome.co.kr/#/SERIES_UP_drama_detail"
+                        target="_blank"
+                      >
                         <p>상세 페이지</p>
                       </a>
-                      <a href="http://nuno6844.dothome.co.kr/#/SearchPage" target="_blank">
+                      <a
+                        href="http://nuno6844.dothome.co.kr/#/SearchPage"
+                        target="_blank"
+                      >
                         <p>검색 페이지</p>
                       </a>
-                      <a href="http://nuno6844.dothome.co.kr/#/ProfilePage" target="_blank">
+                      <a
+                        href="http://nuno6844.dothome.co.kr/#/ProfilePage"
+                        target="_blank"
+                      >
                         <p>프로필 페이지</p>
                       </a>
-                      <a href="http://nuno6844.dothome.co.kr/#/add" target="_blank">
+                      <a
+                        href="http://nuno6844.dothome.co.kr/#/add"
+                        target="_blank"
+                      >
                         <p>더보기 페이지</p>
                       </a>
                     </div>
@@ -698,16 +789,28 @@ function App() {
                       <a href="http://solidbass.dothome.co.kr" target="_blank">
                         <p>메인 페이지</p>
                       </a>
-                      <a href="http://solidbass.dothome.co.kr/login.php" target="_blank">
+                      <a
+                        href="http://solidbass.dothome.co.kr/login.php"
+                        target="_blank"
+                      >
                         <p>로그인 페이지</p>
                       </a>
-                      <a href="http://solidbass.dothome.co.kr/register_form.php" target="_blank">
+                      <a
+                        href="http://solidbass.dothome.co.kr/register_form.php"
+                        target="_blank"
+                      >
                         <p>회원가입 페이지</p>
                       </a>
-                      <a href="http://solidbass.dothome.co.kr/list.php" target="_blank">
+                      <a
+                        href="http://solidbass.dothome.co.kr/list.php"
+                        target="_blank"
+                      >
                         <p>게시판 페이지</p>
                       </a>
-                      <a href="http://solidbass.dothome.co.kr/map_info.php" target="_blank">
+                      <a
+                        href="http://solidbass.dothome.co.kr/map_info.php"
+                        target="_blank"
+                      >
                         <p>지도 페이지</p>
                       </a>
                     </div>
@@ -745,7 +848,20 @@ function App() {
                   </div>
                 </div>
               </section>
-
+              {/* Top Button */}
+              <button
+                className={`top-btn ${isLightMode ? "light" : ""}`}
+                onClick={() => {
+                  const rightPanel = rightPanelRef.current;
+                  if (!rightPanel) return;
+                  rightPanel.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                  });
+                }}
+              >
+                ⬆ Top
+              </button>
               {/* Footer */}
               <footer>
                 <p>Kakao Talk - ljg6844</p>

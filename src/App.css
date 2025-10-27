@@ -3,7 +3,7 @@
 * {
   margin: 0;
   padding: 0;
-  background-color: #0f172a;
+  /* background-color: #0f172a; */
   cursor: none !important;
   user-select: none;
 }
@@ -54,6 +54,26 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+/* .light-toggle {
+  position: absolute;
+  top: 74px;
+  right: 80px;
+  background: none;
+  border: 2px solid #8b9dbb;
+  border-radius: 8px;
+  color: #8b9dbb;
+  padding: 8px 12px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000;
+} */
+
+
+/* .light-toggle:hover{
+  background-color: #00ffff;
+} */
 
 
 
@@ -520,7 +540,7 @@ body {
 /* 안양시청 */
 .pro-anyang {
   width: 95%;
-  height: 300px;
+  height: 320px;
   display: flex;
   overflow: hidden;
   border: 2px solid #8b9dbb;
@@ -532,10 +552,8 @@ body {
   transition: 0.5s ease-in-out;
 }
 
-
-
 .pro-anyang:hover{
-  height: 340px;
+  height: 410px;
   transition: 0.5s ease-in-out;
 }
 
@@ -546,7 +564,7 @@ body {
   text-align: center;
 }
 .link p{
-  font-size: 20px;
+  font-size: 14px !important;
   margin-top: 20px;
   margin-bottom: 0px;
   font-weight: bold;
@@ -560,7 +578,7 @@ body {
 /* 시리즈업 */
 .pro-series {
   width: 95%;
-  height: 300px;
+  height: 340px;
   display: flex;
   overflow: hidden;
   border: 2px solid #8b9dbb;
@@ -573,7 +591,7 @@ body {
 }
 
 .pro-series:hover{
-  height: 340px;
+  height: 420px;
 }
 
 /* .project-textbox>h3{
@@ -592,7 +610,7 @@ body {
 /* Sourvenir */
 .pro-sourve {
   width: 95%;
-  height: 300px;
+  height: 340px;
   display: flex;
   border: 2px solid #8b9dbb;
   border-radius: 7px;
@@ -605,7 +623,7 @@ body {
 }
 
 .pro-sourve:hover{
-  height: 370px;
+  height: 460px;
   transition: 0.5s ease-in-out;
 }
 
@@ -736,7 +754,7 @@ body {
 }
 
 .project-textbox {
-  width: 310px;
+  width: 380px;
   height: 200px;
   margin-top: 20px;
   margin-left: 26px;
@@ -756,8 +774,8 @@ body {
 }
 
 .project-textbox p {
-  font-size: 15px;
-  line-height: 16px;
+  font-size: 18px;
+  line-height: 22px;
   color: #8b9dbb;
 }
 
@@ -811,6 +829,39 @@ body {
 /* Skill:Hover */
 /* Skill:Hover */
 
+
+/* Top Button */
+.top-btn {
+  position: fixed;
+  bottom: 40px;
+  right: 60px;
+  background-color: #2bddd7;
+  color: #0f172a;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+  z-index: 9999;
+}
+
+.top-btn:hover {
+  /* transform: translateY(-3px); */
+  scale: 1.1;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+/* 라이트모드용 */
+.top-btn.light {
+  background-color: #a55b2a;
+  color: #fffdfb;
+  box-shadow: 0 4px 8px rgba(120, 84, 50, 0.4);
+}
+
+
 /* Footer */
 /* Footer */
 /* Footer */
@@ -840,21 +891,31 @@ footer p:nth-child(3) {
 /* 반응형 대응 */
 /* 반응형 대응 */
 /* 반응형 대응 */
-@media (max-width: 1024px) {
-  .Wrap {
-    flex-direction: column;
-    width: 100%;
+@media (max-width: 1440px) {
+  .left-panel{
+    width: 25%;
+    scale: 0.9;
+    margin-top: -40px;
+    z-index: 10;
+  }
+  .left-panel .title-img{
+    margin-top: -15px;
+  }
+  .light-toggle{
+    top: 30px;
+    padding-left: 100px;
+    /* left: 271px; */
   }
 
-  .left-panel {
-    width: 100%;
-    height: auto;
-    position: relative;
+  .profile-area{
+    width: 500px;
   }
 
-  .right-panel {
-    width: 100%;
-    height: auto;
-    overflow-y: visible;
+  /* 우측 */
+  .right-panel{
+    margin-top: -40px;
+    margin-right:100px;
+    padding: 20px 0;
+    scale: 0.9;
   }
 }
