@@ -70,12 +70,9 @@ body {
   z-index: 1000;
 } */
 
-
 /* .light-toggle:hover{
   background-color: #00ffff;
 } */
-
-
 
 .title-img {
   width: 70%;
@@ -109,7 +106,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%; 
+  height: 100%;
   backface-visibility: hidden;
   border-radius: 12px;
   display: flex;
@@ -127,15 +124,14 @@ body {
 .back {
   transform: rotateY(180deg) translateZ(0); /* 뒤집힌 상태 준비 */
   z-index: 1;
-  color: white; 
+  color: white;
 }
 
-.back>img{
+.back > img {
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
-
 
 .left-panel h1 {
   font-size: 50px;
@@ -174,7 +170,7 @@ body {
   margin-bottom: 20px;
 }
 
-.left-panel>nav>ul>li:nth-child(3){
+.left-panel > nav > ul > li:nth-child(3) {
   margin-bottom: 0;
 }
 
@@ -536,6 +532,10 @@ body {
   background: rgba(15, 23, 42, 0.6);
   border: 1px solid rgba(43, 221, 215, 0.3);
 }
+.pro-genesis:hover {
+  box-shadow: 0 0 15px #2bddd7;
+  transition: 0.5s ease-in-out;
+}
 
 /* 안양시청 */
 .pro-anyang {
@@ -552,26 +552,39 @@ body {
   transition: 0.5s ease-in-out;
 }
 
-.pro-anyang:hover{
-  height: 410px;
+.pro-anyang:hover {
+  height: 440px;
+  box-shadow: 0 0 15px #2bddd7;
   transition: 0.5s ease-in-out;
 }
 
 .link {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 330px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3개씩 가로 정렬 */
-  gap: 5px; /* 요소 간 간격 */
+  grid-template-columns: repeat(4, 1fr); /* 3개씩 가로 정렬 */
+  gap: 5px 20px; /* 요소 간 간격 */
   text-align: center;
 }
-.link p{
-  font-size: 14px !important;
+.link a {
+  text-decoration: none !important;
+}
+.link p {
+  width: 150px;
+  font-size: 15px !important;
   margin-top: 20px;
   margin-bottom: 0px;
+  padding: 3px 0;
+  border-radius: 8px;
+  background-color: #8b9dbb;
+  color: #0f172a !important;
   font-weight: bold;
-  text-decoration: underline;
+  text-decoration: none;
 }
-.link p:hover{
-  color: #00ffff;
+.link p:hover {
+  color: #00ffff !important;
   transition: 0.8s;
 }
 
@@ -590,8 +603,9 @@ body {
   transition: 0.5s ease-in-out;
 }
 
-.pro-series:hover{
-  height: 420px;
+.pro-series:hover {
+  height: 430px;
+  box-shadow: 0 0 15px #2bddd7;
 }
 
 /* .project-textbox>h3{
@@ -599,12 +613,11 @@ body {
   margin: 10px 0 5px 0;
 } */
 
-.pro-series .link p{
+.pro-series .link p {
   /* font-size: 20px; */
   margin-top: 13px;
   margin-bottom: 0px;
   font-weight: bold;
-  text-decoration: underline;
 }
 
 /* Sourvenir */
@@ -622,15 +635,15 @@ body {
   overflow: hidden;
 }
 
-.pro-sourve:hover{
-  height: 460px;
+.pro-sourve:hover {
+  height: 430px;
+  box-shadow: 0 0 15px #2bddd7;
   transition: 0.5s ease-in-out;
 }
 
-.pro-sourve .link p{
+.pro-sourve .link p {
   margin-top: 12px;
 }
-
 
 /* little-Farmer */
 .pro-little {
@@ -643,6 +656,37 @@ body {
   backdrop-filter: blur(10px);
   background: rgba(15, 23, 42, 0.6);
   border: 1px solid rgba(43, 221, 215, 0.3);
+  transition: 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+.pro-little:hover {
+  height: 480px;
+  box-shadow: 0 0 15px #2bddd7;
+  transition: 0.5s ease-in-out;
+}
+
+.pro-little .link p {
+  margin-top: 12px;
+}
+.project-textbox > a {
+  width: 70px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: #8b9dbb;
+  float: left;
+  text-decoration: none;
+  padding: 0 10px;
+  margin-left: 20px;
+}
+
+.project-textbox > a >p{
+  color: #0f172a !important;
+  font-weight: bold;
+}
+.project-textbox > a:hover > p{
+  color: #00ffff !important;
+  transition: 0.3s ease-in-out;
 }
 
 .pro-series > .project-imgbox:nth-child(1) {
@@ -754,7 +798,7 @@ body {
 }
 
 .project-textbox {
-  width: 380px;
+  width: 390px;
   height: 200px;
   margin-top: 20px;
   margin-left: 26px;
@@ -765,7 +809,7 @@ body {
   font-size: 20px;
   font-weight: bold;
   color: #2bddd7;
-  margin-bottom:5px;
+  margin-bottom: 5px;
   display: flex;
 }
 
@@ -829,7 +873,6 @@ body {
 /* Skill:Hover */
 /* Skill:Hover */
 
-
 /* Top Button */
 .top-btn {
   position: fixed;
@@ -861,7 +904,6 @@ body {
   box-shadow: 0 4px 8px rgba(120, 84, 50, 0.4);
 }
 
-
 /* Footer */
 /* Footer */
 /* Footer */
@@ -892,29 +934,29 @@ footer p:nth-child(3) {
 /* 반응형 대응 */
 /* 반응형 대응 */
 @media (max-width: 1440px) {
-  .left-panel{
+  .left-panel {
     width: 25%;
     scale: 0.9;
     margin-top: -40px;
     z-index: 10;
   }
-  .left-panel .title-img{
+  .left-panel .title-img {
     margin-top: -15px;
   }
-  .light-toggle{
+  .light-toggle {
     top: 30px;
     padding-left: 100px;
     /* left: 271px; */
   }
 
-  .profile-area{
+  .profile-area {
     width: 500px;
   }
 
   /* 우측 */
-  .right-panel{
+  .right-panel {
     margin-top: -40px;
-    margin-right:100px;
+    margin-right: 100px;
     padding: 20px 0;
     scale: 0.9;
   }

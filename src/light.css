@@ -112,7 +112,7 @@ body.light-body {
 
 /* 커서 */
 .light .cursor-circle {
-  background-color: rgba(201, 152, 100, 0.25);
+  background-color: rgba(201, 152, 100, 0.25) !important;
 }
 
 /* 교육 섹션 */
@@ -174,14 +174,81 @@ body.light-body {
   color: #3b2f2f;
 }
 
-.light .link p {
-  color: #a55b2a;
+.light .link {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 320px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 3개씩 가로 정렬 */
+  gap: 0px 20px !important; /* 요소 간 간격 */
+  text-align: center;
+}
+
+.light .project-textbox > a {
+  width: 70px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: #e9d6c1;
+  float: left;
+  text-decoration: none;
+  padding: 0 10px;
+  margin-left: 20px;
+}
+
+.light .project-textbox > a >p{
+  color: #3b2f2f !important;
+  font-weight: bold;
+}
+.light .project-textbox > a:hover >p{
+  color: #c06b33 !important;
+  transition: 0.3s ease-in-out;
 }
 
 .light .link p:hover {
   color: #c06b33;
   transition: 0.5s;
   text-shadow: 0 0 10px rgba(192, 107, 51, 0.4);
+}
+.light .link p{
+  width: 150px;
+  font-size: 15px !important;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  padding: 3px 0;
+  border-radius: 8px;
+  background-color: #e9d6c1;
+  color: #0f172a !important;
+  font-weight: bold;
+  text-decoration: none;
+}
+.light .link p:hover{
+  color: #a55b2a !important;
+  transition: 0.8s;
+}
+.light .pro-little:hover{
+  height: 480px !important;
+  box-shadow: 0 0 15px rgba(180, 130, 90, 0.4);
+  transition: 0.5s ease-in-out;
+}
+.light .pro-sourve:hover{
+  height: 430px !important;
+  box-shadow: 0 0 15px rgba(180, 130, 90, 0.4);
+  transition: 0.5s ease-in-out;
+}
+.light .pro-series:hover{
+  height: 430px !important;
+  box-shadow: 0 0 15px rgba(180, 130, 90, 0.4);
+  transition: 0.5s ease-in-out;
+}
+.light .pro-anyang:hover{
+  height: 430px !important;
+  box-shadow: 0 0 15px rgba(180, 130, 90, 0.4);
+  transition: 0.5s ease-in-out;
+}
+.light .pro-genesis:hover{
+  box-shadow: 0 0 15px rgba(180, 130, 90, 0.4);
+  transition: 0.5s ease-in-out;
 }
 
 /* Footer */
@@ -213,6 +280,3 @@ body.light-body {
 .theme-toggle:hover {
   transform: scale(1.05);
 }
-
-/* 반응형 */
-

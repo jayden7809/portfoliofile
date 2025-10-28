@@ -19,6 +19,7 @@ import figma from "./assets/images/figma.png";
 import node from "./assets/images/nodejs.png";
 import next from "./assets/images/letter-n.png";
 import arrow from "./assets/images/arrow-down-sign-to-navigate.png";
+import lightarrow from "./assets/images/light arrow-down-sign-to-navigate.png";
 
 /* 증명사진 */
 import profile from "./assets/images/231A0913.jpg";
@@ -533,7 +534,7 @@ function App() {
                           >
                             <img
                               style={{ width: "30px", height: "30px" }}
-                              src={arrow}
+                              src={isLightMode ? lightarrow : arrow}
                               alt="arrow"
                             />
                           </button>
@@ -553,7 +554,14 @@ function App() {
                 {/* 리틀파머 */}
                 <div className="pro-little">
                   <div className="project-imgbox">
-                    <img src={little} alt="little" />
+                    <a
+                      href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="클릭하시면 사이트로 이동합니다."
+                    >
+                      <img src={little} alt="little" />
+                    </a>
                   </div>
                   <div className="project-textbox">
                     <h2>
@@ -567,11 +575,130 @@ function App() {
                     <p>세번째 팀 프로젝트로 농업 교육용 강의 페이지를</p>
                     <p>작업해 봤습니다.</p>
                     <p>&nbsp;</p>
-                    <p>마찬가지로 Figma 를 사용해 디자인을 구상하고 </p>
-                    <p>React를 기반으로 작업하면서 Node.js를 적용</p>
-                    <p> 예정이며 영상도 추후 삽입 예정입니다.</p>
+                    <p>Figma 를 사용해 디자인을 구상하고 이후 </p>
+                    <p>반응형 사이트로 작업하기 위하여 모바일버전 과</p>
+                    <p>태블릿버전으로 각각 디자인을 수정하였습니다.</p>
+                    <p>Next.js로 작업하면서 AWS를 이용하여 배포 후</p>
+                    <p>MongoDB를 이용하여 데이터 베이스를 저장 및</p>
+                    <p>관리하였습니다.</p>
                     <p>&nbsp;</p>
-                    <p>현재 개발중입니다.</p>
+                    <a
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.open(
+                          "http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/",
+                          "_blank",
+                          "width=1440,height=844,noopener,noreferrer"
+                        );
+                      }}
+                      title="클릭하시면 PC 화면으로 사이트가 열립니다."
+                    >
+                      <p>PC</p>
+                    </a>
+                    <a
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.open(
+                          "http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/",
+                          "_blank",
+                          "width=768,height=844,noopener,noreferrer"
+                        );
+                      }}
+                      title="클릭하시면 Tablet 화면으로 사이트가 열립니다."
+                    >
+                      <p>Tablet</p>
+                    </a>
+                    <a
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.open(
+                          "http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/",
+                          "_blank",
+                          "width=375,height=844,noopener,noreferrer"
+                        );
+                      }}
+                      title="클릭하시면 Mobile 화면으로 사이트가 열립니다."
+                    >
+                      <p>Mobile</p>
+                    </a>
+
+                    <div className="link">
+                      <a
+                        href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/"
+                        target="_blank"
+                      >
+                        <p>메인 페이지</p>
+                      </a>
+                      <a
+                        href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/edu?tab=house"
+                        target="_blank"
+                      >
+                        <p>영상목록 페이지</p>
+                      </a>
+                      <a
+                        href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/edudetail?tab=house"
+                        target="_blank"
+                      >
+                        <p>영상재생 페이지</p>
+                      </a>
+                      <a
+                        href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/shop"
+                        target="_blank"
+                      >
+                        <p>지원사업 페이지</p>
+                      </a>
+                      <a
+                        href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/shop/goods-01"
+                        target="_blank"
+                      >
+                        <p>상품 페이지</p>
+                      </a>
+                      <a
+                        href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/cook"
+                        target="_blank"
+                      >
+                        <p>요리교실 페이지</p>
+                      </a>
+                      <a
+                        href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/farm"
+                        target="_blank"
+                      >
+                        <p>농장예약 페이지</p>
+                      </a>
+                      <a
+                        href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/myFarm"
+                        target="_blank"
+                      >
+                        <p>마이 페이지</p>
+                      </a>
+                      <a
+                        href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/board"
+                        target="_blank"
+                      >
+                        <p>FAQ 페이지</p>
+                      </a>
+                      <a
+                        href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/cart"
+                        target="_blank"
+                      >
+                        <p>장바구니 페이지</p>
+                      </a>
+                      <a
+                        href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/login"
+                        target="_blank"
+                      >
+                        <p>로그인 페이지</p>
+                      </a>
+                      <a
+                        href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/member"
+                        target="_blank"
+                      >
+                        <p>회원가입 페이지</p>
+                      </a>
+                    </div>
                   </div>
                 </div>
 
@@ -664,10 +791,16 @@ function App() {
                 <div className="pro-series">
                   <div className="project-imgbox">
                     <a
-                      href="http://nuno6844.dothome.co.kr"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="클릭하시면 사이트로 이동합니다."
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.open(
+                          "http://nuno6844.dothome.co.kr",
+                          "_blank",
+                          "width=390,height=844,noopener,noreferrer"
+                        );
+                      }}
+                      title="클릭하시면 모바일 화면으로 사이트가 열립니다."
                     >
                       <img
                         className="project-series-log"
@@ -676,12 +809,19 @@ function App() {
                       />
                     </a>
                   </div>
+
                   <div className="project-imgbox">
                     <a
-                      href="http://nuno6844.dothome.co.kr/#/HomeView"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="클릭하시면 사이트로 이동합니다."
+                      href="#"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.open(
+                          "http://nuno6844.dothome.co.kr/#/HomeView",
+                          "_blank",
+                          "width=390,height=844,noopener,noreferrer"
+                        );
+                      }}
+                      title="클릭하시면 모바일 화면으로 사이트가 열립니다."
                     >
                       <img
                         className="project-series-full"
@@ -690,6 +830,7 @@ function App() {
                       />
                     </a>
                   </div>
+
                   <div className="project-textbox">
                     <h2>
                       모바일 OTT 플랫폼 작업<p>모바일버전</p>
@@ -716,38 +857,86 @@ function App() {
                     <p>대해서 배울수 있었던 작업이었습니다.</p>
                     <div className="link">
                       <a
-                        href="http://nuno6844.dothome.co.kr/#/login"
-                        target="_blank"
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          window.open(
+                            "http://nuno6844.dothome.co.kr/#/login",
+                            "_blank",
+                            "width=390,height=844,noopener,noreferrer"
+                          );
+                        }}
+                        title="클릭하시면 모바일 화면으로 사이트가 열립니다."
                       >
                         <p>로그인 페이지</p>
                       </a>
                       <a
-                        href="http://nuno6844.dothome.co.kr/#/HomeView"
-                        target="_blank"
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          window.open(
+                            "http://nuno6844.dothome.co.kr/#/HomeView",
+                            "_blank",
+                            "width=390,height=844,noopener,noreferrer"
+                          );
+                        }}
+                        title="클릭하시면 모바일 화면으로 사이트가 열립니다."
                       >
                         <p>메인 페이지</p>
                       </a>
                       <a
-                        href="http://nuno6844.dothome.co.kr/#/SERIES_UP_drama_detail"
-                        target="_blank"
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          window.open(
+                            "http://nuno6844.dothome.co.kr/#/SERIES_UP_drama_detail",
+                            "_blank",
+                            "width=390,height=844,noopener,noreferrer"
+                          );
+                        }}
+                        title="클릭하시면 모바일 화면으로 사이트가 열립니다."
                       >
                         <p>상세 페이지</p>
                       </a>
                       <a
-                        href="http://nuno6844.dothome.co.kr/#/SearchPage"
-                        target="_blank"
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          window.open(
+                            "http://nuno6844.dothome.co.kr/#/SearchPage",
+                            "_blank",
+                            "width=390,height=844,noopener,noreferrer"
+                          );
+                        }}
+                        title="클릭하시면 모바일 화면으로 사이트가 열립니다."
                       >
                         <p>검색 페이지</p>
                       </a>
                       <a
-                        href="http://nuno6844.dothome.co.kr/#/ProfilePage"
-                        target="_blank"
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          window.open(
+                            "http://nuno6844.dothome.co.kr/#/ProfilePage",
+                            "_blank",
+                            "width=390,height=844,noopener,noreferrer"
+                          );
+                        }}
+                        title="클릭하시면 모바일 화면으로 사이트가 열립니다."
                       >
                         <p>프로필 페이지</p>
                       </a>
                       <a
-                        href="http://nuno6844.dothome.co.kr/#/add"
-                        target="_blank"
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          window.open(
+                            "http://nuno6844.dothome.co.kr/#/add",
+                            "_blank",
+                            "width=390,height=844,noopener,noreferrer"
+                          );
+                        }}
+                        title="클릭하시면 모바일 화면으로 사이트가 열립니다."
                       >
                         <p>더보기 페이지</p>
                       </a>
