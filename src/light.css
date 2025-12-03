@@ -18,7 +18,7 @@ body.light-body {
 /* 전체 배경 및 폰트 */
 .light * {
   background-color: transparent;
-  cursor: none !important;
+  /* cursor: none !important; */
   user-select: none;
   font-family: "M PLUS Rounded 1c", sans-serif;
 }
@@ -102,6 +102,13 @@ body.light-body {
   }
 }
 
+.light .cursor {
+  display: inline-block;
+  width: 0ch;
+  animation: blink 2s step-start infinite;
+  color: #6f5544;
+}
+
 .light .title p {
   color: #6f5544 !important;
 }
@@ -155,7 +162,8 @@ body.light-body {
 .light .pro-anyang,
 .light .pro-series,
 .light .pro-sourve,
-.light .pro-little {
+.light .pro-little,
+.light .pro-phase {
   background: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(195, 160, 125, 0.4);
   backdrop-filter: blur(6px);
@@ -225,6 +233,11 @@ body.light-body {
 .light .link p:hover{
   color: #a55b2a !important;
   transition: 0.8s;
+}
+.light .pro-phase:hover{
+  /* height: 480px !important; */
+  box-shadow: 0 0 15px rgba(180, 130, 90, 0.4);
+  transition: 0.5s ease-in-out;
 }
 .light .pro-little:hover{
   height: 480px !important;

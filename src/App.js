@@ -19,7 +19,9 @@ import figma from "./assets/images/figma.png";
 import node from "./assets/images/nodejs.png";
 import next from "./assets/images/letter-n.png";
 import arrow from "./assets/images/arrow-down-sign-to-navigate.png";
-import lightarrow from "./assets/images/light arrow-down-sign-to-navigate.png";
+import lightarrow from "./assets/images/light-arrow-down-sign-to-navigate.png";
+import ts from "./assets/images/ts.png"
+
 
 /* 증명사진 */
 import profile from "./assets/images/231A0913.jpg";
@@ -31,6 +33,7 @@ import serieslog from "./assets/images/serieslog.png";
 import seriesup from "./assets/images/serisup.png";
 import sourvenir from "./assets/images/sourvenir.png";
 import little from "./assets/images/littel.png";
+import phase from "./assets/images/phaseimg.png"
 
 function TypingText({ texts, speed = 50, startIndex = 0 }) {
   const [typed, setTyped] = useState(
@@ -71,17 +74,299 @@ function TypingText({ texts, speed = 50, startIndex = 0 }) {
           {typed[idx]}
           {((idx === currentLine && !finished) ||
             (finished && idx === texts.length - 1)) && (
-            <span className="cursor">|</span>
-          )}
+              <span className="cursor">|</span>
+            )}
         </p>
       ))}
     </>
   );
 }
 
+// function ModalPreview({ open, url, w, h, onClose, isLightMode }) {
+//   const overlayRef = useRef(null);
+//   const wrapRef = useRef(null);
+//   const [scale, setScale] = useState(1);
+
+//   // 🔄 로딩/차단 감지용 상태
+//   const [loading, setLoading] = useState(true);
+//   const [blocked, setBlocked] = useState(false);
+//   const [iframeKey, setIframeKey] = useState(0); // 강제 리렌더(새로고침용)
+
+//   // 배경 스크롤/제스처 잠금
+//   useEffect(() => {
+//     if (!open) return;
+//     const prevOverflow = document.body.style.overflow;
+//     const prevTouch = document.body.style.touchAction;
+//     const prevOverscroll = document.body.style.overscrollBehavior;
+//     document.body.style.overflow = "hidden";
+//     document.body.style.touchAction = "none";
+//     document.body.style.overscrollBehavior = "contain";
+//     return () => {
+//       document.body.style.overflow = prevOverflow;
+//       document.body.style.touchAction = prevTouch;
+//       document.body.style.overscrollBehavior = prevOverscroll;
+//     };
+//   }, [open]);
+
+//   // ESC 닫기
+//   useEffect(() => {
+//     if (!open) return;
+//     const onKey = (e) => e.key === "Escape" && onClose?.();
+//     window.addEventListener("keydown", onKey);
+//     return () => window.removeEventListener("keydown", onKey);
+//   }, [open, onClose]);
+
+//   const handleOverlayClick = (e) => {
+//     if (e.target === overlayRef.current) onClose?.();
+//   };
+
+//   // 모달 박스 크기/스케일 계산 (그대로 유지)
+//   const PADDING_X = 24;
+//   const PADDING_Y = 16;
+//   const TOOLBAR_H = 48;
+//   const GAP_FROM_EDGE = 24;
+//   const [boxSize, setBoxSize] = useState({ boxW: w + PADDING_X * 2, boxH: h + TOOLBAR_H + PADDING_Y * 2 });
+
+//   useEffect(() => {
+//     if (!open) return;
+//     const calc = () => {
+//       const vw = window.innerWidth;
+//       const vh = window.innerHeight;
+//       const idealBoxW = w + PADDING_X * 2;
+//       const idealBoxH = h + TOOLBAR_H + PADDING_Y * 2;
+//       const maxBoxW = Math.max(320, vw - GAP_FROM_EDGE * 2);
+//       const maxBoxH = Math.max(240, vh - GAP_FROM_EDGE * 2);
+//       const sW = maxBoxW / idealBoxW;
+//       const sH = maxBoxH / idealBoxH;
+//       const s = Math.min(sW, sH, 1);
+//       const realBoxW = Math.min(idealBoxW, maxBoxW);
+//       const realBoxH = Math.min(idealBoxH, maxBoxH);
+//       setBoxSize({ boxW: realBoxW, boxH: realBoxH });
+//       setScale(s);
+//     };
+//     calc();
+//     window.addEventListener("resize", calc);
+//     return () => window.removeEventListener("resize", calc);
+//   }, [open, w, h]);
+
+//   // 🎨 색상 (그대로 유지)
+//   const colors = isLightMode
+//     ? { bg: "#6e5546", text: "#fdf8f3", border: "#cbd5e1", toolbarBg: "#6e5546", accent: "#fdf8f3", btnText: "#fdf8f3" }
+//     : { bg: "#111", text: "#2bddd7", border: "#2a3242", toolbarBg: "#0f172a", accent: "#2bddd7", btnText: "#2bddd7" };
+
+//   // ⏱️ 차단 자동 감지: open/URL/iframeKey 바뀔 때마다 타이머로 감지
+//   useEffect(() => {
+//     if (!open) return;
+//     setLoading(true);
+//     setBlocked(false);
+
+//     // 1500ms 안에 onLoad가 안 오면 차단으로 추정
+//     const t = setTimeout(() => {
+//       setBlocked(true);
+//       setLoading(false);
+//     }, 3000);
+
+//     return () => clearTimeout(t);
+//   }, [open, url, iframeKey]);
+
+//   // 🔁 캐시 무시 새로고침 (쿼리스트링 버스터 붙이기)
+//   const handleReload = () => {
+//     setLoading(true);
+//     setBlocked(false);
+//     setIframeKey(k => k + 1);
+//   };
+
+//   if (!open) return null;
+
+//   return (
+//     <div
+//       ref={overlayRef}
+//       onClick={handleOverlayClick}
+//       style={{
+//         position: "fixed",
+//         inset: 0,
+//         background: "rgba(0,0,0,.55)",
+//         zIndex: 9999,
+//         display: "grid",
+//         placeItems: "center",
+//         padding: "24px",
+//       }}
+//     >
+//       <div
+//         ref={wrapRef}
+//         role="dialog"
+//         aria-modal="true"
+//         style={{
+//           background: colors.bg,
+//           color: colors.text,
+//           width: boxSize.boxW,
+//           height: boxSize.boxH,
+//           borderRadius: 12,
+//           boxShadow: "0 20px 60px rgba(0,0,0,.35)",
+//           display: "flex",
+//           flexDirection: "column",
+//           overflow: "hidden",
+//           border: `1px solid ${colors.border}`,
+//         }}
+//       >
+//         {/* Toolbar */}
+//         <div
+//           style={{
+//             height: TOOLBAR_H,
+//             minHeight: TOOLBAR_H,
+//             display: "flex",
+//             alignItems: "center",
+//             gap: 8,
+//             padding: "0 12px",
+//             background: colors.toolbarBg,
+//             borderBottom: `1px solid ${colors.border}`,
+//           }}
+//         >
+//           <strong style={{ marginRight: "auto" }}>Preview</strong>
+
+//           {/* 🔁 새로고침 */}
+//           <button
+//             onClick={handleReload}
+//             style={{ ...btnStyle, color: colors.btnText, border: `1px solid ${colors.accent}` }}
+//             title="미리보기 새로고침"
+//           >
+//             새로고침
+//           </button>
+
+//           {/* ↗ 새 창 열기 (차단 시 유용) */}
+//           <a
+//             href={url}
+//             target="_blank"
+//             rel="noopener noreferrer"
+//             style={{ ...btnStyle, color: colors.btnText, border: `1px solid ${colors.accent}`, textDecoration: "none" }}
+//             title="새 탭에서 열기"
+//           >
+//             새 창으로
+//           </a>
+
+//           {/* ✕ 닫기 */}
+//           <button
+//             onClick={onClose}
+//             style={{ ...btnStyle, color: colors.btnText, border: `1px solid ${colors.accent}` }}
+//             title="닫기"
+//           >
+//             ✕ 닫기
+//           </button>
+//         </div>
+
+//         {/* Canvas */}
+//         <div
+//           style={{
+//             position: "relative",
+//             flex: 1,
+//             padding: "16px 24px",
+//             background:
+//               "repeating-conic-gradient(#222 0% 25%, #252525 0% 50%) 50% / 24px 24px",
+//             display: "grid",
+//             placeItems: "center",
+//             overflow: "auto",
+//           }}
+//         >
+//           {/* 로딩 스피너(간단 버전) */}
+//           {loading && !blocked && (
+//             <div style={{ position: "absolute", top: 12, right: 12, fontSize: 12, opacity: 0.8 }}>
+//               로딩 중…
+//             </div>
+//           )}
+
+//           {/* 차단 시 대체 UI */}
+//           {blocked ? (
+//             <div
+//               style={{
+//                 display: "grid",
+//                 placeItems: "center",
+//                 gap: 12,
+//                 textAlign: "center",
+//               }}
+//             >
+//               <div style={{ opacity: 0.9 }}>
+//                 이 사이트는 보안 정책으로 인해 iframe에 표시되지 않아요.<br />
+//                 아래 버튼으로 새 창에서 열어주세요.
+//               </div>
+//               <div style={{ display: "flex", gap: 8, justifyContent: "center" }}>
+//                 <a
+//                   href={url}
+//                   target="_blank"
+//                   rel="noopener noreferrer"
+//                   style={{ ...btnStyle, color: colors.btnText, border: `1px solid ${colors.accent}`, textDecoration: "none" }}
+//                 >
+//                   새 창으로 열기
+//                 </a>
+//                 <button
+//                   onClick={handleReload}
+//                   style={{ ...btnStyle, color: colors.btnText, border: `1px solid ${colors.accent}` }}
+//                 >
+//                   재시도
+//                 </button>
+//               </div>
+//             </div>
+//           ) : (
+//             // 정상 시도: 정확한 viewport 크기의 프레임
+//             <div
+//               style={{
+//                 width: w,
+//                 height: h,
+//                 background: "#fff",
+//                 boxShadow: "0 10px 30px rgba(0,0,0,.4)",
+//                 transform: `scale(${scale})`,
+//                 transformOrigin: "top left",
+//                 borderRadius: 6,
+//                 overflow: "hidden",
+//               }}
+//             >
+//               <iframe
+//                 key={iframeKey}
+//                 title="site-preview"
+//                 // 캐시버스터 쿼리 (새로고침 시 갱신)
+//                 src={`${url}${url.includes("?") ? "&" : "?"}_pv=${iframeKey}`}
+//                 onLoad={() => {
+//                   setLoading(false);
+//                   setBlocked(false);
+//                 }}
+//                 style={{ width: "100%", height: "100%", border: 0, display: "block" }}
+//               // sandbox를 쓰면 더 막힐 수 있어 기본은 비사용. 필요 시 아래 참고:
+//               // sandbox="allow-same-origin allow-scripts allow-forms allow-popups"
+//               />
+//             </div>
+//           )}
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+// const btnStyle = {
+//   background: "transparent",
+//   fontSize: "12px",
+//   fontWeight: "bold",
+//   borderRadius: 8,
+//   padding: "6px 10px",
+//   cursor: "pointer",
+// };
+
+
 function App() {
+
+  const [preview, setPreview] = useState({
+    open: false,
+    url: "",
+    w: 1440,
+    h: 844,
+  });
+
+  const openModalPreview = (url, w, h) => {
+    setPreview({ open: true, url, w, h });
+  };
+
+  const closeModalPreview = () => setPreview((p) => ({ ...p, open: false }));
+
   const [showIntro, setShowIntro] = useState(true);
-  const cursor = useRef({ x: 0, y: 0 });
+  // const cursor = useRef({ x: 0, y: 0 });
   const circleRefs = useRef([]);
   const [openBox, setOpenBox] = useState(null);
   const [activeSection, setActiveSection] = useState("about");
@@ -125,9 +410,11 @@ function App() {
 
   const toggleTheme = () => setTheme(theme === "dark" ? "light" : "dark");
 
-  /* 오른쪽 스크롤 제어 */
+  // 오른쪽 스크롤 제어
   useEffect(() => {
-    if (showIntro) return;
+    // 인트로나 모달 오픈 중이면 전역 wheel 리스너 설치 안 함
+    if (showIntro || preview.open) return;
+
     const rightPanel = rightPanelRef.current;
     if (!rightPanel) return;
 
@@ -138,35 +425,8 @@ function App() {
 
     window.addEventListener("wheel", handleWheel, { passive: false });
     return () => window.removeEventListener("wheel", handleWheel);
-  }, [showIntro]);
+  }, [showIntro, preview.open]); // ← preview.open 추가
 
-  /* 마우스 커서 */
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      cursor.current = { x: e.clientX, y: e.clientY };
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-
-    const animate = () => {
-      let target = { ...cursor.current };
-      circleRefs.current.forEach((circle) => {
-        const rect = circle.getBoundingClientRect();
-        const current = {
-          x: rect.left + rect.width / 2,
-          y: rect.top + rect.height / 2,
-        };
-        const lerp = (start, end, amt) => start + (end - start) * amt;
-        const amt = 0.25;
-        const x = lerp(current.x, target.x, amt);
-        const y = lerp(current.y, target.y, amt);
-        circle.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
-      });
-      requestAnimationFrame(animate);
-    };
-    animate();
-
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
 
   /* 내비게이션 active */
   useEffect(() => {
@@ -216,8 +476,8 @@ function App() {
       refName === "about"
         ? aboutRef
         : refName === "skill"
-        ? skillRef
-        : projectRef;
+          ? skillRef
+          : projectRef;
     const offset = targetRef.current.offsetTop - 100;
     smoothScrollTo(rightPanel, offset);
   };
@@ -241,113 +501,143 @@ function App() {
       name: "HTML",
       img: html,
       detail1:
-        "HTML을 활용하여 기본적인 웹페이지의 구조를 설계하고 배치할 수 있습니다.",
-      detail2: "프로젝트에서는 효율적인 구조 설계를 통한 작업경험이 있습니다.",
+        "HTML5의 시맨틱 태그를 활용해 웹페이지의 구조를 설계하고 구성할 수 있습니다.",
+      detail2:
+        "프로젝트에서 유지보수가 용이한 구조 설계를 통해 효율적인 작업 경험을 쌓았습니다.",
+      detail3:
+        "웹 표준과 접근성을 고려한 마크업을 작성하여 일관된 사용자 경험을 제공합니다.",
     },
     {
       id: 2,
       name: "CSS",
       img: css,
       detail1:
-        "Flex와 Grid를 활용하여 배치하고 시각적인 다자인을 완성한 경험이 있습니다.",
+        "Flex와 Grid를 활용해 레이아웃을 구성하고 완성도 높은 디자인을 구현할 수 있습니다.",
       detail2:
-        "애니메이션과 트랜지션을 사용해 인터랙티브한 UI를 구현 할 수 있습니다.",
+        "애니메이션과 트랜지션을 활용해 인터랙티브한 UI를 구현한 경험이 있습니다.",
+      detail3:
+        "미디어쿼리와 유연한 레이아웃 설계로 다양한 디바이스 환경에서도 최적화된 반응형 UI를 구현합니다.",
     },
     {
       id: 3,
       name: "JavaScript",
       img: Java,
       detail1:
-        "사용자의 입력을 처리하고, 애니메이션을 구현하며 API연동 및 데이터를 처리한 경험이 있습니다.",
-      detail2: "프로젝트에서 API 연동, 상태관리 로직 등을 직접 구현했습니다.",
+        "사용자 입력 처리, 애니메이션 구현, API 통신 및 데이터 조작을 수행한 경험이 있습니다.",
+      detail2:
+        "프로젝트에서 API 연동과 상태관리 로직을 직접 설계·구현해 동적인 웹 환경을 구축합니다.",
+      detail3:
+        "ES6 문법과 Async/Await, Promise 를 활용해 유지보수성 높은 코드를 작성할 수 있습니다.",
     },
     {
       id: 4,
-      name: "GitHub",
-      img: git,
+      name: "TypeScript",
+      img: ts,
       detail1:
-        "Git Hub를 통해 프로젝트간 팀원들과의 협업을해본 경험이 있습니다.",
+        "TypeScript를 활용하여 JavaScript 코드에 타입을 부여하고 코드 안정성을 높였습니다.",
       detail2:
-        "브랜치를 사용하여 프로젝트 작업간 버전관리를 통한 백업을 할 수 있습니다.",
+        "인터페이스와 타입 정의를 통해 프로젝트의 구조와 데이터 흐름을 명확히 설계했습니다.",
+      detail3:
+        "프로젝트에서 유지보수성과 협업 효율성을 향상시키며 안전한 코드 작성 경험이 있습니다.",
     },
     {
       id: 5,
+      name: "GitHub",
+      img: git,
+      detail1:
+        "GitHub를 활용해 팀 프로젝트에서 효율적인 협업과 코드 관리를 경험했습니다.",
+      detail2:
+        "브랜치를 활용해 작업 단위를 분리하고, 버전 관리를 통해 안정적으로 프로젝트를 운영할 수 있습니다.",
+      detail3:
+        "Pull Request와 Merge 과정을 통해 코드 리뷰를 진행하며 협업 품질을 향상시켰습니다.",
+    },
+    {
+      id: 6,
       name: "PHP",
       img: php,
       detail1: "기초적인 CRUD 구현 및 서버사이드 렌더링 경험이 있습니다.",
       detail2: "MySQL 연동과 간단한 백엔드 API 구축 경험이 있습니다.",
-    },
-    {
-      id: 6,
-      name: "Vue",
-      img: vue,
-      detail1:
-        "Vue 컴포넌트 기반 구조에 익숙하며, Vue Router 및 Pinia 상태관리 경험이 있습니다.",
-      detail2:
-        "프로젝트에서 컴포넌트를 재사용하고, 많은 파일을 한번에 다룬 경험이 있습니다.",
+      detail3: "폼 데이터 처리, 세션 관리 등 웹 서버 로직의 흐름을 이해하고 직접 구현할 수 있습니다.",
     },
     {
       id: 7,
-      name: "J-Query",
-      img: jq,
-      detail1:
-        "Java Script의 라이브러리로 문서를 더 간결하게 작성할 수 있습니다.",
-      detail2: "AJAX 통신 및 슬라이드, 모달 등 UI효과 구현 경험이 있습니다.",
+      name: "Vue",
+      img: vue,
+      detail1: "Vue 컴포넌트 기반 구조에 익숙하며, Vue Router 및 Pinia 상태관리 경험이 있습니다.",
+      detail2: "프로젝트에서 컴포넌트를 재사용하고, 많은 파일을 한번에 다룬 경험이 있습니다.",
+      detail3: "반응형 데이터 바인딩과 라이프사이클 훅을 활용해 동적인 UI를 구현할 수 있습니다.",
     },
     {
       id: 8,
-      name: "React",
-      img: react,
-      detail1:
-        "React를 통해 작업하면서 편리함과 실용성을 느끼며 작업한 경험이 있습니다.",
-      detail2: "본 포트폴리오는 React로 작업되었습니다.",
+      name: "J-Query",
+      img: jq,
+      detail1: "jQuery는 DOM 조작과 이벤트 처리를 간결한 문법으로 구현할 수 있습니다.",
+      detail2: "AJAX 통신, 슬라이드/모달 등 UI 효과를 빠르게 구성한 경험이 있습니다.",
+      detail3: "레거시 코드 유지보수 시 jQuery 플러그인을 적절히 활용하여 생산성을 높였습니다.",
     },
     {
       id: 9,
-      name: "Illustrator",
-      img: illust,
-      detail1: "벡터 디자인 작업 및 로고, 아이콘 제작 경험이 있습니다.",
-      detail2: "다양한 디자인요소를 제작하고 편집한 경험이 있습니다.",
+      name: "React",
+      img: react,
+      detail1: "React의 컴포넌트를 활용해 재사용성과 유지보수성이 높은 UI를 구현할 수 있습니다.",
+      detail2: "상태 관리와 Props를 통해 설계하며 효율적인 컴포넌트 구조를 구성한 경험이 있습니다.",
+      detail3: "본 포트폴리오는 React를 기반으로 개발되었으며, 실제 프로젝트 수준의 구조 설계와 기능 구현을 진행했습니다.",
     },
     {
       id: 10,
-      name: "Photoshop",
-      img: photoshop,
+      name: "Illustrator",
+      img: illust,
       detail1:
-        "이미지 보정, 합성, 그래픽 디자인 등 전반적인 편집 경험이 있습니다.",
-      detail2: "마스크기능을 활용하여 작업한 경험이 있습니다.",
+        "벡터 기반의 디자인 작업에 능숙하며, 로고·아이콘 등 그래픽 요소를 제작할 수 있습니다.",
+      detail2:
+        "레이어와 패스 도구를 활용해 도형 편집 및 일러스트 작업을 수행한 경험이 있습니다.",
+      detail3:
+        "브랜드 콘셉트에 맞춘 색상과 형태 설계를 통해 일관된 비주얼 아이덴티티를 구현합니다.",
     },
     {
       id: 11,
-      name: "Bootstrap",
-      img: boot,
-      detail1: "Bootstrap을 이용한 반응형 UI 제작 경험이 있습니다.",
+      name: "Photoshop",
+      img: photoshop,
+      detail1:
+        "이미지 보정, 합성, 그래픽 디자인 등 다양한 시각적 편집 경험이 있습니다.",
       detail2:
-        "디자인 일관성을 유지하고, 다양한 해상도에서 적용 가능한 레이아웃을 구현할 수 있습니다.",
+        "마스크 기능과 레이어 효과를 활용하여 세밀한 이미지 조합 및 색상 보정을 진행했습니다.",
+      detail3:
+        "웹 디자인과 UI 시안 제작 과정에서 Photoshop을 활용해 시각 요소를 기획·편집한 경험이 있습니다.",
     },
     {
       id: 12,
-      name: "Figma",
-      img: figma,
-      detail1:
-        "UI/UX 설계 및 디자인을 통해 팀원들과 협업을 해본 경험이 있습니다.",
-      detail2:
-        "디자인 후 프로토타입을 통해 시각적인 요소를 디테일 하게 작업할 수 있습니다.",
+      name: "Bootstrap",
+      img: boot,
+      detail1: "Bootstrap의 시스템을 활용해 반응형 레이아웃을 효율적으로 구현한 경험이 있습니다.",
+      detail2: "다양한 컴포넌트와 유틸리티 클래스를 활용하여 일관된 디자인과 UI 개발을 수행했습니다.",
+      detail3: "프로젝트 전반에 걸쳐 Bootstrap을 커스터마이징하여 스타일에 맞는 디자인을 적용했습니다.",
     },
     {
       id: 13,
-      name: "Node.js",
-      img: node,
-      detail1: "클라이언트와의 비동기 통신을 효율적으로 처리했습니다.",
-      detail2: "로그인, 데이터 관리 등 기본적인 기능을 구현한 경험이 있습니다.",
+      name: "Figma",
+      img: figma,
+      detail1: "UI/UX 설계를 기반으로 팀원들과 협업하며 프로토타입을 제작한 경험이 있습니다.",
+      detail2: "컴포넌트와 오토 레이아웃을 활용해 일관된 디자인 시스템을 구성했습니다.",
+      detail3: "디자인 시안을 기반으로 실제 화면 구현까지 연결하며 원활한 협업을 진행했습니다.",
     },
     {
       id: 14,
+      name: "Node.js",
+      img: node,
+      detail1: "Express 기반의 서버 환경에서 클라이언트 요청을 비동기적으로 처리한 경험이 있습니다.",
+      detail2: "로그인, 회원 관리, 데이터 CRUD 등 기본적인 백엔드 기능을 직접 구현했습니다.",
+      detail3: "MongoDB와 연동하여 RESTful API를 구축하고, 서버 구조를 효율적으로 관리했습니다.",
+    },
+    {
+      id: 15,
       name: "Next.js",
       img: next,
-      detail1: "React기반 프레임 워크로",
-      detail2: "회원가입, 로그인 및 게시판작성을 구현한 경험이 있습니다.",
+      detail1: "React 기반의 프레임워크로, 서버 사이드 렌더링과 정적 페이지 생성에 익숙합니다.",
+      detail2: "회원가입, 로그인, 게시판 등 주요 기능을 구현하며 풀스택 구조를 이해했습니다.",
+      detail3: "API 라우트와 NextAuth를 활용해 인증 및 데이터 관리 기능을 직접 구성했습니다.",
     },
+
   ];
 
   const handleToggle = (id) => setOpenBox((prev) => (prev === id ? null : id));
@@ -358,13 +648,13 @@ function App() {
         <Intro onFinish={() => setShowIntro(false)} />
       ) : (
         <>
-          {[5, 4, 3, 2, 1].map((i, idx) => (
+          {/* {[5, 4, 3, 2, 1].map((i, idx) => (
             <div
               key={i}
               className={`cursor-circle circle-${i}`}
               ref={(el) => (circleRefs.current[idx] = el)}
             ></div>
-          ))}
+          ))} */}
           <div className={`Wrap ${isLightMode ? "light" : ""}`}>
             <aside className="left-panel">
               {/* 프로필 + 라이트모드 버튼 */}
@@ -460,12 +750,12 @@ function App() {
                   texts={[
                     '"Code With Purpose, Design With Passion"',
                     '"의미있는 코드를, 열정을 담아 디자인한다."',
-                    "저는 약 9년간 음악 연주와 레코딩 프리랜서로",
-                    "활동하며 미래에 대해 고민하던중,",
-                    '선배의 "너는 무엇을 하더라도 잘 해낼 것 같다"',
-                    "라는 한마디에 자신감을 얻었고.",
-                    "이후 호기심이 생긴 개발 분야에 도전하며",
-                    "새로운 길을 걷기 시작했습니다.",
+                    "React, TypeScript, Node.js 기반의 프로젝트",
+                    "경험을 통해 안정적이고 유지보수성 높은 코드를 구현합니다.",
+                    "UI/UX를 고려한 세밀한 설계와 개발로",
+                    "사용자에게 직관적인 경험을 제공합니다.",
+                    "끊임없이 배우고, 도전하기 위해 노력하며",
+                    "사용자 중심의 경험과 성능 최적화를 항상 고민합니다.",
                   ]}
                   speed={50}
                   startIndex={2} // 3번째 줄부터 타이핑 효과
@@ -495,6 +785,7 @@ function App() {
                     HTML: require("./assets/images/light-html.png"),
                     CSS: require("./assets/images/light-css.png"),
                     JavaScript: require("./assets/images/light-js.png"),
+                    TypeScript: require("./assets/images/light-ts.png"),
                     GitHub: require("./assets/images/light-github.png"),
                     PHP: require("./assets/images/light-php.png"),
                     Vue: require("./assets/images/light-vue.png"),
@@ -517,9 +808,8 @@ function App() {
                   return (
                     <div
                       key={skill.id}
-                      className={`toggle-box ${
-                        openBox === skill.id ? "open" : ""
-                      }`}
+                      className={`toggle-box ${openBox === skill.id ? "open" : ""
+                        }`}
                       onClick={() => handleToggle(skill.id)}
                     >
                       <div className="image-area">
@@ -542,6 +832,7 @@ function App() {
                         <div className="skill-detail">
                           <p>{skill.detail1}</p>
                           <p>{skill.detail2}</p>
+                          <p>{skill.detail3}</p>
                         </div>
                       </div>
                     </div>
@@ -551,6 +842,50 @@ function App() {
 
               {/* Project Section */}
               <section ref={projectRef} className="Project">
+                {/* 올페이즈 */}
+                <div className="pro-phase">
+                  <div className="project-imgbox">
+                    <a
+                      /* href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="클릭하시면 사이트로 이동합니다." */
+                    >
+                      <img src={phase} alt="phase" />
+                    </a>
+                  </div>
+                  <div className="project-textbox">
+                    <h2>
+                      데이터 시각화 대시보드 페이지 <p>PC버전</p>
+                    </h2>
+                    <div className="project-skill">
+                      <div>React</div>
+                      <div>Node.js</div>
+                      <div>TypeScript</div>
+                    </div>
+                    <p>API를 사용하여 데이터를 가져와 시각화하여</p>
+                    <p>정보를 확인하는 대시보드 페이지를 작업했습니다.</p>
+                    <p>&nbsp;</p>
+                    <p>메인 대시보드 화면에서 종합 정보와 그래프를 통해</p>
+                    <p>거래 금액과 거래 상태 등 을 시각화 하였고, 최근</p>
+                    <p>거래내역을 통해 결제 정보를 확인할 수 있도록 하였</p>
+                    <p>습니다.</p>
+                    <p>가맹점 목록 탭에서 가맹점정보를 추가할 수 있도록</p>
+                    <p>작업하였고 목록페이지에 필터를 통한 정렬 기능을</p>
+                    <p>구현 했습니다.</p>
+                    <p>&nbsp;</p>
+                    <div className="link">
+                      <a
+                        href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <p>메인 페이지</p>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
                 {/* 리틀파머 */}
                 <div className="pro-little">
                   <div className="project-imgbox">
@@ -583,16 +918,10 @@ function App() {
                     <p>관리하였습니다.</p>
                     <p>&nbsp;</p>
                     <a
-                      href="#"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        window.open(
-                          "http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/",
-                          "_blank",
-                          "width=1440,height=844,noopener,noreferrer"
-                        );
-                      }}
-                      title="클릭하시면 PC 화면으로 사이트가 열립니다."
+                      href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="클릭하시면 PC 화면으로 열립니다."
                     >
                       <p>PC</p>
                     </a>
@@ -606,7 +935,7 @@ function App() {
                           "width=768,height=844,noopener,noreferrer"
                         );
                       }}
-                      title="클릭하시면 Tablet 화면으로 사이트가 열립니다."
+                      title="클릭하시면 Tablet 화면으로 열립니다."
                     >
                       <p>Tablet</p>
                     </a>
@@ -620,81 +949,92 @@ function App() {
                           "width=375,height=844,noopener,noreferrer"
                         );
                       }}
-                      title="클릭하시면 Mobile 화면으로 사이트가 열립니다."
+                      title="클릭하시면 Mobile 화면으로 열립니다."
                     >
                       <p>Mobile</p>
                     </a>
-
                     <div className="link">
                       <a
                         href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <p>메인 페이지</p>
                       </a>
                       <a
                         href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/edu?tab=house"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <p>영상목록 페이지</p>
                       </a>
                       <a
                         href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/edudetail?tab=house"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <p>영상재생 페이지</p>
                       </a>
                       <a
                         href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/shop"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <p>지원사업 페이지</p>
                       </a>
                       <a
                         href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/shop/goods-01"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <p>상품 페이지</p>
                       </a>
                       <a
                         href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/cook"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <p>요리교실 페이지</p>
                       </a>
                       <a
                         href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/farm"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <p>농장예약 페이지</p>
                       </a>
                       <a
                         href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/myFarm"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <p>마이 페이지</p>
                       </a>
                       <a
                         href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/board"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <p>FAQ 페이지</p>
                       </a>
                       <a
                         href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/cart"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <p>장바구니 페이지</p>
                       </a>
                       <a
                         href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/login"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <p>로그인 페이지</p>
                       </a>
                       <a
                         href="http://littlefarmer1.ap-northeast-2.elasticbeanstalk.com/member"
                         target="_blank"
+                        rel="noopener noreferrer"
                       >
                         <p>회원가입 페이지</p>
                       </a>
@@ -795,7 +1135,7 @@ function App() {
                       onClick={(e) => {
                         e.preventDefault();
                         window.open(
-                          "http://nuno6844.dothome.co.kr",
+                          "http://nuno6844.dothome.co.kr/",
                           "_blank",
                           "width=390,height=844,noopener,noreferrer"
                         );
@@ -1057,6 +1397,17 @@ function App() {
                 <p>Instagram - ISTJaehyung</p>
                 <p>E-mail - soi_jaehyung@naver.com</p>
               </footer>
+
+              {/* <ModalPreview
+                open={preview.open}
+                url={preview.url}
+                w={preview.w}
+                h={preview.h}
+                onClose={closeModalPreview}
+                isLightMode={isLightMode}
+              /> */}
+
+
             </main>
           </div>
         </>
